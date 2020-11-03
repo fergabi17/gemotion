@@ -1,0 +1,33 @@
+.navbar-brand{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 21pt;
+
+}
+
+.nav-back {
+    height: 55px;
+}
+
+h1 {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    font-family: 'Kanit', sans-serif;
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .header-container {
+        padding-top: 164px;
+    }
+}
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
+    }
+}
