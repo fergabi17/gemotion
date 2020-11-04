@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <h1>Game List Here</h1>
+            <div class="row">
+                {% for game in content %}
+                <div class="col-12">
+                    {{game.name}}, {{game.released}}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+    
+</div>
+
+{% endblock %}
