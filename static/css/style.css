@@ -1,3 +1,19 @@
+
+h1 {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    font-family: 'Kanit', sans-serif;
+}
+
+h2 {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+
+/* ------------------------------------------------ NAVBAR */
 .navbar-brand{
     font-family: 'Bungee Inline', cursive;
     font-size: 21pt;
@@ -5,7 +21,7 @@
 }
 
 .nav-back {
-    height: 55px;
+    height: 60px;
 }
 
 .menu-list>li {
@@ -13,11 +29,22 @@
     padding-right: 20px;
 }
 
-h1 {
-    margin-top: 15vh;
-    margin-bottom: 15vh;
-    font-family: 'Kanit', sans-serif;
+/* ------------------------------------------------ CARDS */
+
+.card-img-wrapper {
+    height: 200px;
+    overflow: hidden;
+    background-color: aliceblue;
 }
+
+.card-img {
+    /* width: inherit; */
+    height: 200px;
+    object-fit: cover;
+}
+
+
+
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {

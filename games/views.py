@@ -19,8 +19,8 @@ def search_game(request):
     """
 
 
-    game_title = request.POST['game-title']
-    game_title = urllib.parse.quote(game_title)
+    input_game_title = request.POST['game-title']
+    game_title = urllib.parse.quote(input_game_title)
 
     conn = http.client.HTTPSConnection("rapidapi.p.rapidapi.com")
 
@@ -34,9 +34,10 @@ def search_game(request):
     res = conn.getresponse()
     data = res.read()
     result = json.loads(data)["results"]
-    
+
     
     context = {
+        "search_term": input_game_title,
         "content": result
     }
     

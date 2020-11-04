@@ -6,19 +6,45 @@
 
     <div class="row">
         <div class="col-12">
-            <h1>Game List Here</h1>
-            <div class="row">
+            <h2>Chose a game</h2>
+
+            {% if content %}
+            <p class="font-weight-light text-right"><span class="font-weight-bold">Showing results for:</span> {{search_term}}</p>
+            {% endif %}
+            <hr>
+
+            {% if content %}
+            <div class="row row-cols-1 row-cols-md-3">
                 {% for game in content %}
-                <div class="col-12">
-                    {{game.name}}, {{game.released}}
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-img-wrapper">
+                            <img src="{{game.background_image}}" class="card-img" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{game.name}}</h5>
+                            {% if game.released %}
+                            <p class="font-weight-lighter text-left">{{game.released | slice:"0:4"}}</p>
+                            {% endif %}
+                            <button type="button" class="btn btn-outline-info btn-block">Review this!</button>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
 
+            {% else %}
+            <div class="col-12">
+                <h3 class="font-weight-lighter text-center">¯\_(ツ)_/¯<br>Oops! No results were found for: {{search_term}}</h3>
+            </div>
+            {% endif %}
+
+            <a href="#">Back to top</a>
+
+
+
         </div>
     </div>
-
-    
 </div>
 
 {% endblock %}
