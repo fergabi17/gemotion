@@ -21,13 +21,17 @@ class Emotion(models.Model):
     
     
 class Game(models.Model):
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    game_id = models.IntegerField()
     name = models.CharField(max_length=254)
-    platform = models.CharField(max_length=254)
-    description = models.TextField(blank=True)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
+    platforms = models.CharField(max_length=254)
     genre = models.CharField(max_length=254, blank=True, null=True)
-    score = models.IntegerField(blank=True, null=True)
+    description = models.TextField(null=True, blank=True)
+    released = models.CharField(max_length=254, null=True, blank=True)
+    background_image = models.URLField(max_length=1024, null=True, blank=True)
+    background_image_additional = models.URLField(max_length=1024, null=True, blank=True)
+    saturated_color = models.CharField(max_length=254, null=True, blank=True)
+    dominant_color = models.CharField(max_length=254, null=True, blank=True)
+    
 
     def __str__(self):
         return self.name

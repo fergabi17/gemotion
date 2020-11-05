@@ -12,7 +12,6 @@ h2 {
 }
 
 
-
 /* ------------------------------------------------ NAVBAR */
 .navbar-brand{
     font-family: 'Bungee Inline', cursive;
@@ -38,7 +37,6 @@ h2 {
 }
 
 .card-img {
-    /* width: inherit; */
     height: 200px;
     object-fit: cover;
 }

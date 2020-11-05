@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
+from .models import Game
 
 # FOR GAME SEARCH
 import http.client
@@ -16,29 +16,88 @@ def index(request):
 
 def search_game(request):
     """
+    Searches for a game title on the api
+    and returns the result of the search on
+    the game-list page
     """
-
-
     input_game_title = request.POST['game-title']
-    game_title = urllib.parse.quote(input_game_title)
-
-    conn = http.client.HTTPSConnection("rapidapi.p.rapidapi.com")
-
-    headers = {
-        'x-rapidapi-key': "e930d07731mshe00718d0d6136eap1ae483jsnf6cea31e0367",
-        'x-rapidapi-host': "rawg-video-games-database.p.rapidapi.com"
-        }
-
-    conn.request("GET", f"/games?search={game_title}", headers=headers)
-
-    res = conn.getresponse()
-    data = res.read()
-    result = json.loads(data)["results"]
-
+    result = call_RAWG(request, "search")["results"]
     
     context = {
         "search_term": input_game_title,
         "content": result
     }
-    
+
     return render(request, 'games/game-list.html', context)
+
+
+def get_or_add_game(request):
+    """
+    """
+    game_id = int(request.POST["game-id"])
+
+    try:
+        return Game.objects.get(game_id=game_id)
+    except:
+        game = call_RAWG(request, "game_details")
+
+        new_game = Game(game_id=game_id, 
+                        name=game["name"], 
+                        platforms=extract_from_list(game["platforms"], "platform"), 
+                        genre=extract_from_list(game["genres"], "name"),
+                        description=game["description"], 
+                        released=game["released"],
+                        background_image=game["background_image"], 
+                        background_image_additional=game["background_image_additional"],
+                        saturated_color=game["saturated_color"], 
+                        dominant_color=game["dominant_color"])
+
+        new_game.save()
+        return new_game
+
+
+def call_RAWG(request, get_type):
+    """
+    """
+    if get_type == "search":
+        input_game_title = request.POST['game-title']
+        game_title = urllib.parse.quote(input_game_title)
+        url_end = f"?search={game_title}"
+    else:
+        game_id = int(request.POST["game-id"])
+        url_end = f"/{game_id}"
+        
+    conn = http.client.HTTPSConnection("rapidapi.p.rapidapi.com")
+
+    headers = {
+        'x-rapidapi-key': "e930d07731mshe00718d0d6136eap1ae483jsnf6cea31e0367",
+        'x-rapidapi-host': "rawg-video-games-database.p.rapidapi.com"
+    }
+
+    conn.request("GET", f"/games{url_end}", headers=headers)
+    res = conn.getresponse().read()
+    return json.loads(res)
+
+
+"""
+**************************************************** HELPER FUNC
+"""
+
+def extract_from_list(sublist, key):
+    """
+    @list: array
+    @key: string
+    @returns: string
+    Extracts the key values from a list of dicts
+    """
+    content = ""
+    for item in sublist:
+        if key == "platform":
+            value = item[key]["name"]
+        else:
+            value = item[key]
+        if content == "":
+            content = value
+        else:
+            content = content + ", " + value
+    return content
