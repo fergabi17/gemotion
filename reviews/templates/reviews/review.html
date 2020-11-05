@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <!-- ************************************************************ TOP -->
+            <h2>Review</h2>
+
+            {% if content %}
+            <p class="font-weight-light text-right"><span class="font-weight-bold">Showing results for:</span> {{search_term}}</p>
+            {% endif %}
+            <hr>
+
+            <!-- ************************************************************ CARDS -->
+
+
+            <a href="#">Back to top</a>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
