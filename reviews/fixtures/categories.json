@@ -1,0 +1,114 @@
+[
+    {
+        "pk": 1,
+        "model": "reviews.category",
+        "fields": {
+            "name": "angry"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "reviews.category",
+        "fields": {
+            "name": "depressed"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "reviews.category",
+        "fields": {
+            "name": "confused"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "reviews.category",
+        "fields": {
+            "name": "helpless"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "reviews.category",
+        "fields": {
+            "name": "indifferent"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "reviews.category",
+        "fields": {
+            "name": "afraid"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "reviews.category",
+        "fields": {
+            "name": "hurt"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "reviews.category",
+        "fields": {
+            "name": "sad"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "reviews.category",
+        "fields": {
+            "name": "welcoming"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "reviews.category",
+        "fields": {
+            "name": "happy"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "reviews.category",
+        "fields": {
+            "name": "alive"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "reviews.category",
+        "fields": {
+            "name": "good"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "reviews.category",
+        "fields": {
+            "name": "love"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "reviews.category",
+        "fields": {
+            "name": "interested"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "reviews.category",
+        "fields": {
+            "name": "positive"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "reviews.category",
+        "fields": {
+            "name": "strong"
+        }
+    }
+]
