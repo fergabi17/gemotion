@@ -1,0 +1,234 @@
+[
+    {
+        "pk": 1,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "aggressive",
+            "category": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "annoyed",
+            "category": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "enraged",
+            "category": 1
+        }
+    },
+    {
+        "pk": 4,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "hateful",
+            "category": 1
+        }
+    },
+    {
+        "pk": 5,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "hostile",
+            "category": 1
+        }
+    },
+    {
+        "pk": 6,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "indignant",
+            "category": 1
+        }
+    },
+    {
+        "pk": 7,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "infuriated",
+            "category": 1
+        }
+    },
+    {
+        "pk": 8,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "pissed",
+            "category": 1
+        }
+    },
+    {
+        "pk": 9,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "irritated",
+            "category": 1
+        }
+    },
+    {
+        "pk": 10,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "insulting/ed",
+            "category": 1
+        }
+    },
+    {
+        "pk": 11,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "provoked",
+            "category": 1
+        }
+    },
+    {
+        "pk": 12,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "resentful",
+            "category": 1
+        }
+    },
+    {
+        "pk": 13,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "upset",
+            "category": 1
+        }
+    },
+    {
+        "pk": 14,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "offensive",
+            "category": 1
+        }
+    },
+    {
+        "pk": 15,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "a sense of loss",
+            "category": 2
+        }
+    },
+    {
+        "pk": 16,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "terrible",
+            "category": 2
+        }
+    },
+    {
+        "pk": 17,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "pessimistic",
+            "category": 2
+        }
+    },
+    {
+        "pk": 18,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "lifeless",
+            "category": 2
+        }
+    },
+    {
+        "pk": 19,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "diminished",
+            "category": 2
+        }
+    },
+    {
+        "pk": 20,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "discouraged",
+            "category": 2
+        }
+    },
+    {
+        "pk": 21,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "beaten",
+            "category": 2
+        }
+    },
+    {
+        "pk": 22,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "guilty",
+            "category": 2
+        }
+    },
+    {
+        "pk": 23,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "lousy",
+            "category": 2
+        }
+    },
+    {
+        "pk": 24,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "miserable",
+            "category": 2
+        }
+    },
+    {
+        "pk": 25,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "powerless",
+            "category": 2
+        }
+    },
+    {
+        "pk": 26,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "dissatisfied",
+            "category": 2
+        }
+    },
+    {
+        "pk": 27,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "ashamed",
+            "category": 2
+        }
+    },
+    {
+        "pk": 28,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "despicable",
+            "category": 2
+        }
+    },
+    {
+        "pk": 29,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "detestable",
+            "category": 2
+        }
+    }
+]
