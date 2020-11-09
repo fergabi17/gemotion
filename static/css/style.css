@@ -28,6 +28,10 @@ h2 {
     padding-right: 20px;
 }
 
+/* ------------------------------------------------ CONTENT */
+.content-area{
+    min-height: calc(100vh - 100px);
+}
 /* ------------------------------------------------ CARDS */
 
 .card-img-wrapper {
@@ -44,20 +48,3 @@ h2 {
 
 
 
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .header-container {
-        padding-top: 164px;
-    }
-}
-
-/* pad the top a bit when navbar is collapsed on mobile */
-@media (max-width: 991px) {
-    .header-container {
-        padding-top: 116px;
-    }
-
-    body {
-        height: calc(100vh - 116px);
-    }
-}

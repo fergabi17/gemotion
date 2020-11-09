@@ -75,7 +75,7 @@
         "pk": 10,
         "model": "reviews.emotion",
         "fields": {
-            "name": "insulting/ed",
+            "name": "insulted",
             "category": 1
         }
     },
@@ -91,7 +91,7 @@
         "pk": 12,
         "model": "reviews.emotion",
         "fields": {
-            "name": "resentful",
+            "name": "offensive",
             "category": 1
         }
     },
@@ -99,28 +99,12 @@
         "pk": 13,
         "model": "reviews.emotion",
         "fields": {
-            "name": "upset",
-            "category": 1
-        }
-    },
-    {
-        "pk": 14,
-        "model": "reviews.emotion",
-        "fields": {
-            "name": "offensive",
-            "category": 1
-        }
-    },
-    {
-        "pk": 15,
-        "model": "reviews.emotion",
-        "fields": {
             "name": "a sense of loss",
             "category": 2
         }
     },
     {
-        "pk": 16,
+        "pk": 14,
         "model": "reviews.emotion",
         "fields": {
             "name": "terrible",
@@ -128,7 +112,7 @@
         }
     },
     {
-        "pk": 17,
+        "pk": 15,
         "model": "reviews.emotion",
         "fields": {
             "name": "pessimistic",
@@ -136,15 +120,15 @@
         }
     },
     {
-        "pk": 18,
+        "pk": 16,
         "model": "reviews.emotion",
         "fields": {
-            "name": "lifeless",
+            "name": "gloomy",
             "category": 2
         }
     },
     {
-        "pk": 19,
+        "pk": 17,
         "model": "reviews.emotion",
         "fields": {
             "name": "diminished",
@@ -152,7 +136,7 @@
         }
     },
     {
-        "pk": 20,
+        "pk": 18,
         "model": "reviews.emotion",
         "fields": {
             "name": "discouraged",
@@ -160,7 +144,7 @@
         }
     },
     {
-        "pk": 21,
+        "pk": 19,
         "model": "reviews.emotion",
         "fields": {
             "name": "beaten",
@@ -168,7 +152,7 @@
         }
     },
     {
-        "pk": 22,
+        "pk": 20,
         "model": "reviews.emotion",
         "fields": {
             "name": "guilty",
@@ -176,7 +160,7 @@
         }
     },
     {
-        "pk": 23,
+        "pk": 21,
         "model": "reviews.emotion",
         "fields": {
             "name": "lousy",
@@ -184,7 +168,7 @@
         }
     },
     {
-        "pk": 24,
+        "pk": 22,
         "model": "reviews.emotion",
         "fields": {
             "name": "miserable",
@@ -192,7 +176,7 @@
         }
     },
     {
-        "pk": 25,
+        "pk": 23,
         "model": "reviews.emotion",
         "fields": {
             "name": "powerless",
@@ -200,7 +184,7 @@
         }
     },
     {
-        "pk": 26,
+        "pk": 24,
         "model": "reviews.emotion",
         "fields": {
             "name": "dissatisfied",
@@ -208,27 +192,1347 @@
         }
     },
     {
+        "pk": 25,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "disbelief",
+            "category": 3
+        }
+    },
+    {
+        "pk": 26,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "shocked",
+            "category": 3
+        }
+    },
+    {
         "pk": 27,
         "model": "reviews.emotion",
         "fields": {
-            "name": "ashamed",
-            "category": 2
+            "name": "unsure",
+            "category": 3
         }
     },
     {
         "pk": 28,
         "model": "reviews.emotion",
         "fields": {
-            "name": "despicable",
-            "category": 2
+            "name": "disoriented",
+            "category": 3
         }
     },
     {
         "pk": 29,
         "model": "reviews.emotion",
         "fields": {
-            "name": "detestable",
-            "category": 2
+            "name": "lost",
+            "category": 3
+        }
+    },
+    {
+        "pk": 30,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "perplexed",
+            "category": 3
+        }
+    },
+    {
+        "pk": 31,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "skeptical",
+            "category": 3
+        }
+    },
+    {
+        "pk": 32,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "indecisive",
+            "category": 3
+        }
+    },
+    {
+        "pk": 33,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "uncertain",
+            "category": 3
+        }
+    },
+    {
+        "pk": 34,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "uneasy",
+            "category": 3
+        }
+    },
+    {
+        "pk": 35,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "suspicious",
+            "category": 3
+        }
+    },
+    {
+        "pk": 36,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "embarrassed",
+            "category": 3
+        }
+    },
+    {
+        "pk": 37,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "alone",
+            "category": 4
+        }
+    },
+    {
+        "pk": 38,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "despair",
+            "category": 4
+        }
+    },
+    {
+        "pk": 39,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "not in control",
+            "category": 4
+        }
+    },
+    {
+        "pk": 40,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "dominated",
+            "category": 4
+        }
+    },
+    {
+        "pk": 41,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "fatigued",
+            "category": 4
+        }
+    },
+    {
+        "pk": 42,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "forced",
+            "category": 4
+        }
+    },
+    {
+        "pk": 43,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "frustrated",
+            "category": 4
+        }
+    },
+    {
+        "pk": 44,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "incapable",
+            "category": 4
+        }
+    },
+    {
+        "pk": 45,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "pathetic",
+            "category": 4
+        }
+    },
+    {
+        "pk": 46,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "desperate",
+            "category": 4
+        }
+    },
+    {
+        "pk": 47,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "distressed",
+            "category": 4
+        }
+    },
+    {
+        "pk": 48,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "useless",
+            "category": 4
+        }
+    },
+    {
+        "pk": 49,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "bored",
+            "category": 5
+        }
+    },
+    {
+        "pk": 50,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "apathetic",
+            "category": 5
+        }
+    },
+    {
+        "pk": 51,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "disinterested",
+            "category": 5
+        }
+    },
+    {
+        "pk": 52,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "dull",
+            "category": 5
+        }
+    },
+    {
+        "pk": 53,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "lifeless",
+            "category": 5
+        }
+    },
+    {
+        "pk": 54,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "neutral",
+            "category": 5
+        }
+    },
+    {
+        "pk": 55,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "nonchalant",
+            "category": 5
+        }
+    },
+    {
+        "pk": 56,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "weary",
+            "category": 5
+        }
+    },
+    {
+        "pk": 57,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "blas\u00e9",
+            "category": 5
+        }
+    },
+    {
+        "pk": 58,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "detached",
+            "category": 5
+        }
+    },
+    {
+        "pk": 59,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "distant",
+            "category": 5
+        }
+    },
+    {
+        "pk": 60,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "cold",
+            "category": 5
+        }
+    },
+    {
+        "pk": 61,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "cowardly",
+            "category": 6
+        }
+    },
+    {
+        "pk": 62,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "frightened",
+            "category": 6
+        }
+    },
+    {
+        "pk": 63,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "menaced",
+            "category": 6
+        }
+    },
+    {
+        "pk": 64,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "nervous",
+            "category": 6
+        }
+    },
+    {
+        "pk": 65,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "panic",
+            "category": 6
+        }
+    },
+    {
+        "pk": 66,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "quaking",
+            "category": 6
+        }
+    },
+    {
+        "pk": 67,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "restless",
+            "category": 6
+        }
+    },
+    {
+        "pk": 68,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "scared",
+            "category": 6
+        }
+    },
+    {
+        "pk": 69,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "tense",
+            "category": 6
+        }
+    },
+    {
+        "pk": 70,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "terrified",
+            "category": 6
+        }
+    },
+    {
+        "pk": 71,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "threatened",
+            "category": 6
+        }
+    },
+    {
+        "pk": 72,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "worried",
+            "category": 6
+        }
+    },
+    {
+        "pk": 73,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "afflicted",
+            "category": 7
+        }
+    },
+    {
+        "pk": 74,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "alienated",
+            "category": 7
+        }
+    },
+    {
+        "pk": 75,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "victimized",
+            "category": 7
+        }
+    },
+    {
+        "pk": 76,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "crushed",
+            "category": 7
+        }
+    },
+    {
+        "pk": 77,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "dejected",
+            "category": 7
+        }
+    },
+    {
+        "pk": 78,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "wronged",
+            "category": 7
+        }
+    },
+    {
+        "pk": 79,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "disappointed",
+            "category": 7
+        }
+    },
+    {
+        "pk": 80,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "offended",
+            "category": 7
+        }
+    },
+    {
+        "pk": 81,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "sore",
+            "category": 7
+        }
+    },
+    {
+        "pk": 82,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "tormented",
+            "category": 7
+        }
+    },
+    {
+        "pk": 83,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "tortured",
+            "category": 7
+        }
+    },
+    {
+        "pk": 84,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "appalled",
+            "category": 7
+        }
+    },
+    {
+        "pk": 85,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "desolate",
+            "category": 8
+        }
+    },
+    {
+        "pk": 86,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "upset",
+            "category": 8
+        }
+    },
+    {
+        "pk": 87,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "grief",
+            "category": 8
+        }
+    },
+    {
+        "pk": 88,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "grieved",
+            "category": 8
+        }
+    },
+    {
+        "pk": 89,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "lonely",
+            "category": 8
+        }
+    },
+    {
+        "pk": 90,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "mournful",
+            "category": 8
+        }
+    },
+    {
+        "pk": 91,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "heartbroken",
+            "category": 8
+        }
+    },
+    {
+        "pk": 92,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "sorrowful",
+            "category": 8
+        }
+    },
+    {
+        "pk": 93,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "down",
+            "category": 8
+        }
+    },
+    {
+        "pk": 94,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "bitter",
+            "category": 8
+        }
+    },
+    {
+        "pk": 95,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "tearful",
+            "category": 8
+        }
+    },
+    {
+        "pk": 96,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "unpleasant",
+            "category": 8
+        }
+    },
+    {
+        "pk": 97,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "understanding",
+            "category": 9
+        }
+    },
+    {
+        "pk": 98,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "sympathetic",
+            "category": 9
+        }
+    },
+    {
+        "pk": 99,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "reliable",
+            "category": 9
+        }
+    },
+    {
+        "pk": 100,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "easy",
+            "category": 9
+        }
+    },
+    {
+        "pk": 101,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "amazed",
+            "category": 9
+        }
+    },
+    {
+        "pk": 102,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "satisfied",
+            "category": 9
+        }
+    },
+    {
+        "pk": 103,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "accepting",
+            "category": 9
+        }
+    },
+    {
+        "pk": 104,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "kind",
+            "category": 9
+        }
+    },
+    {
+        "pk": 105,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "peaceful",
+            "category": 9
+        }
+    },
+    {
+        "pk": 106,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "calm",
+            "category": 9
+        }
+    },
+    {
+        "pk": 107,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "at ease",
+            "category": 9
+        }
+    },
+    {
+        "pk": 108,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 9
+        }
+    },
+    {
+        "pk": 109,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "great",
+            "category": 10
+        }
+    },
+    {
+        "pk": 110,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "overjoyed",
+            "category": 10
+        }
+    },
+    {
+        "pk": 111,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "festive",
+            "category": 10
+        }
+    },
+    {
+        "pk": 112,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "important",
+            "category": 10
+        }
+    },
+    {
+        "pk": 113,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "delighted",
+            "category": 10
+        }
+    },
+    {
+        "pk": 114,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "glad",
+            "category": 10
+        }
+    },
+    {
+        "pk": 115,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "thankful",
+            "category": 10
+        }
+    },
+    {
+        "pk": 116,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "ecstatic",
+            "category": 10
+        }
+    },
+    {
+        "pk": 117,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "jubilant",
+            "category": 10
+        }
+    },
+    {
+        "pk": 118,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "enthusiastic",
+            "category": 10
+        }
+    },
+    {
+        "pk": 119,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 10
+        }
+    },
+    {
+        "pk": 120,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 10
+        }
+    },
+    {
+        "pk": 121,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "frisky",
+            "category": 11
+        }
+    },
+    {
+        "pk": 122,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "courageous",
+            "category": 11
+        }
+    },
+    {
+        "pk": 123,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "provocative",
+            "category": 11
+        }
+    },
+    {
+        "pk": 124,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "liberated",
+            "category": 11
+        }
+    },
+    {
+        "pk": 125,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "impulsive",
+            "category": 11
+        }
+    },
+    {
+        "pk": 126,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "free",
+            "category": 11
+        }
+    },
+    {
+        "pk": 127,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "animated",
+            "category": 11
+        }
+    },
+    {
+        "pk": 128,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "spirited",
+            "category": 11
+        }
+    },
+    {
+        "pk": 129,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "connected",
+            "category": 11
+        }
+    },
+    {
+        "pk": 130,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "thrilled",
+            "category": 11
+        }
+    },
+    {
+        "pk": 131,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "touched",
+            "category": 11
+        }
+    },
+    {
+        "pk": 132,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "intent",
+            "category": 11
+        }
+    },
+    {
+        "pk": 133,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "comfortable",
+            "category": 12
+        }
+    },
+    {
+        "pk": 134,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "pleased",
+            "category": 12
+        }
+    },
+    {
+        "pk": 135,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "encouraged",
+            "category": 12
+        }
+    },
+    {
+        "pk": 136,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "clever",
+            "category": 12
+        }
+    },
+    {
+        "pk": 137,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "content",
+            "category": 12
+        }
+    },
+    {
+        "pk": 138,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "serene",
+            "category": 12
+        }
+    },
+    {
+        "pk": 139,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "reassured",
+            "category": 12
+        }
+    },
+    {
+        "pk": 140,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "relaxed",
+            "category": 12
+        }
+    },
+    {
+        "pk": 141,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "bright",
+            "category": 12
+        }
+    },
+    {
+        "pk": 142,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "comforted",
+            "category": 12
+        }
+    },
+    {
+        "pk": 143,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 12
+        }
+    },
+    {
+        "pk": 144,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 12
+        }
+    },
+    {
+        "pk": 145,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "loving",
+            "category": 13
+        }
+    },
+    {
+        "pk": 146,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "considerate",
+            "category": 13
+        }
+    },
+    {
+        "pk": 147,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "affectionate",
+            "category": 13
+        }
+    },
+    {
+        "pk": 148,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "sensitive",
+            "category": 13
+        }
+    },
+    {
+        "pk": 149,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "tender",
+            "category": 13
+        }
+    },
+    {
+        "pk": 150,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "devoted",
+            "category": 13
+        }
+    },
+    {
+        "pk": 151,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "attracted",
+            "category": 13
+        }
+    },
+    {
+        "pk": 152,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "passionate",
+            "category": 13
+        }
+    },
+    {
+        "pk": 153,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "admiration",
+            "category": 13
+        }
+    },
+    {
+        "pk": 154,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "drawn toward",
+            "category": 13
+        }
+    },
+    {
+        "pk": 155,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 13
+        }
+    },
+    {
+        "pk": 156,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 13
+        }
+    },
+    {
+        "pk": 157,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "concerned",
+            "category": 14
+        }
+    },
+    {
+        "pk": 158,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "affected",
+            "category": 14
+        }
+    },
+    {
+        "pk": 159,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "fascinated",
+            "category": 14
+        }
+    },
+    {
+        "pk": 160,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "intrigued",
+            "category": 14
+        }
+    },
+    {
+        "pk": 161,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "absorbed",
+            "category": 14
+        }
+    },
+    {
+        "pk": 162,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "inquisitive",
+            "category": 14
+        }
+    },
+    {
+        "pk": 163,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "surprised",
+            "category": 14
+        }
+    },
+    {
+        "pk": 164,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "snoopy",
+            "category": 14
+        }
+    },
+    {
+        "pk": 165,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "engrossed",
+            "category": 14
+        }
+    },
+    {
+        "pk": 166,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "curious",
+            "category": 14
+        }
+    },
+    {
+        "pk": 167,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 14
+        }
+    },
+    {
+        "pk": 168,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 14
+        }
+    },
+    {
+        "pk": 169,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "eager",
+            "category": 15
+        }
+    },
+    {
+        "pk": 170,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "daring",
+            "category": 15
+        }
+    },
+    {
+        "pk": 171,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "challenged",
+            "category": 15
+        }
+    },
+    {
+        "pk": 172,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "optimistic",
+            "category": 15
+        }
+    },
+    {
+        "pk": 173,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "re-enforced",
+            "category": 15
+        }
+    },
+    {
+        "pk": 174,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "inspired",
+            "category": 15
+        }
+    },
+    {
+        "pk": 175,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "determined",
+            "category": 15
+        }
+    },
+    {
+        "pk": 176,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "excited",
+            "category": 15
+        }
+    },
+    {
+        "pk": 177,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "confident",
+            "category": 15
+        }
+    },
+    {
+        "pk": 178,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "bold",
+            "category": 15
+        }
+    },
+    {
+        "pk": 179,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "hopeful",
+            "category": 15
+        }
+    },
+    {
+        "pk": 180,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "lucky",
+            "category": 15
+        }
+    },
+    {
+        "pk": 181,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "sure",
+            "category": 16
+        }
+    },
+    {
+        "pk": 182,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "certain",
+            "category": 16
+        }
+    },
+    {
+        "pk": 183,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "rebellious",
+            "category": 16
+        }
+    },
+    {
+        "pk": 184,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "unique",
+            "category": 16
+        }
+    },
+    {
+        "pk": 185,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "dynamic",
+            "category": 16
+        }
+    },
+    {
+        "pk": 186,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "tenacious",
+            "category": 16
+        }
+    },
+    {
+        "pk": 187,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "hardy",
+            "category": 16
+        }
+    },
+    {
+        "pk": 188,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "secure",
+            "category": 16
+        }
+    },
+    {
+        "pk": 189,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "earnest",
+            "category": 16
+        }
+    },
+    {
+        "pk": 190,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "brave",
+            "category": 16
+        }
+    },
+    {
+        "pk": 191,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 16
+        }
+    },
+    {
+        "pk": 192,
+        "model": "reviews.emotion",
+        "fields": {
+            "name": "",
+            "category": 16
         }
     }
 ]

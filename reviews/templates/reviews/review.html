@@ -1,29 +1,81 @@
 {% extends "base.html"%}
 {% load static %}
 
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{% static 'reviews/css/tags.css' %}">
+
+{% endblock %}
+
+
+{% block extra_js %}
+{% endblock %}
+
 {% block content %}
-<div class="container">
+<!-- ************************************************************ BACKGROUND IMAGE -->
+<div class="container-fluid content-area"
+    style="background-image:url('{% if game.background_image_additional %}{{game.background_image_additional}}{% else %}{{game.background_image}}{% endif%}');background-size: cover;">
 
-    <div class="row">
-        <div class="col-12">
-            <!-- ************************************************************ TOP -->
-            <h2>Review</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-12" style="background-color:rgba(255, 255, 255, 0.6)">
 
-            {% if content %}
-            <p class="font-weight-light text-right"><span class="font-weight-bold">Showing results for:</span> {{search_term}}</p>
-            {% endif %}
-            <hr>
+                <!-- ************************************************************ TOP -->
+                <h2>Review</h2>
+                <h3 class="text-center">{{game.name}}</h3>
+                <hr>
 
-            <!-- ************************************************************ CARDS -->
-            <h3>{{game.name}}</h3>
-            <p>{{game.description}}</p>
+                <!-- ************************************************************ USER INPUT -->
+                <p>Tell us an emotion that appeared while you were playing {{game.name}}</p>
 
-            <a href="#">Back to top</a>
+                <div class="col-12 col-sm-6 offset-sm-3">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="emotion-input" id="emotion-input"
+                            placeholder="Start typing an emotion..." aria-label="Start typing an emotion..."
+                            aria-describedby="button-addon2" class="emotion-input">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark" id="add-emotion"
+                                onclick="addInput('onclick')">Add</button>
+                        </div>
+                    </div>
+                </div>
 
 
+                <!-- ************************************************************ CATEGORY LIST -->
 
+                <h6>OR</h6>
+
+                <button class="btn btn-info">Choose by category</button>
+
+                <!-- ************************************************************ SUBMISSION FORM -->
+                <p>Emotions selected for this game:</p>
+                <form>
+                    {% csrf_token %}
+                    <div class="main-container">
+                        <div class="tag-container">
+                        </div>
+                    </div>
+                    <input type="hidden" value="">
+                    <button class="btn btn-dark" type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+{% endblock %}
 
+{% block postLoad_js %}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'reviews/js/review.js' %}"></script>
+
+<script>
+    $(function () {
+        $("#emotion-input").autocomplete({
+            source: "{% url 'review' %}"
+        });
+        emotions.loadEmotions('{{emotions}}', '{{categories}}');
+    });
+</script>
 {% endblock %}

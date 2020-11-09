@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Game
 
-# FOR GAME SEARCH
 import http.client
 import urllib.parse
 import json
@@ -16,7 +15,7 @@ def index(request):
 
 def search_game(request):
     """
-    Searches for a game title on the api
+    Searches for a game title on the RAWG api
     and returns the result of the search on
     the game-list page
     """
@@ -33,6 +32,9 @@ def search_game(request):
 
 def get_or_add_game(request):
     """
+    Tries getting the game from gemotion database,
+    if not there yet it adds it
+    returns the game object
     """
     game_id = int(request.POST["game-id"])
 
@@ -58,6 +60,8 @@ def get_or_add_game(request):
 
 def call_RAWG(request, get_type):
     """
+    Contacts the RAWG api to search a game
+    or to get game details
     """
     if get_type == "search":
         input_game_title = request.POST['game-title']
