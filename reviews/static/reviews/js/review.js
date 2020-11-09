@@ -5,9 +5,14 @@ var tags = [];
 
 var emotions = {
     list: [],
+    pk: [],
     categories: [],
     loadEmotions: function(emotions, categories){
-        this.list = emotions;
+        emotions = JSON.parse(emotions.replace(/(&quot\;)/g,"\""));
+        for ( var key in emotions){
+            this.list.push(key);
+        }
+        this.pk= emotions;
         this.categories = categories;
     }
 }
@@ -43,6 +48,14 @@ function reset(){
     })
 }
 
+function printTags(){
+    var pkInput = document.querySelector('#pk-list');
+    var pkList = [];
+    tags.forEach (function(tag) {
+        pkList.push(emotions.pk[tag]);
+    })
+    pkInput.value = pkList;
+}
 
 
 var addInput = function (e){
@@ -71,3 +84,5 @@ document.addEventListener('click', function(e){
         addTags();
     }
 })
+
+
