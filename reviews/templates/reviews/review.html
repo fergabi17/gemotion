@@ -24,10 +24,14 @@
                 <!-- ************************************************************ TOP -->
                 <h2>Review</h2>
                 <h3 class="text-center">{{game.name}}</h3>
+                <p class="intro-text">
+                    Platform(s): {{game.platforms}}<br>
+                    Genre(s): {{game.genre}}
+                </p>
                 <hr>
 
                 <!-- ************************************************************ USER INPUT -->
-                <p>Tell us an emotion that appeared while you were playing {{game.name}}</p>
+                <p class="main-text">Tell us an emotion that appeared while you were playing {{game.name}}</p>
 
                 <div class="col-12 col-sm-6 offset-sm-3">
                     <div class="input-group mb-3">
@@ -44,22 +48,91 @@
 
                 <!-- ************************************************************ CATEGORY LIST -->
 
-                <h6>OR</h6>
+                <p class="main-text">or chose by category here:
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse"
+                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Choose by category
+                    </button>
+                </p>
+                <div class="col-12 col-sm-6 collapse" id="collapseExample">
 
-                <button class="btn btn-info">Choose by category</button>
+                        <div class="accordion" id="accordionExample">
+
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            {{categories}}
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        emotions
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                           category
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        emotions
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                            category
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        emotions
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+
+
 
                 <!-- ************************************************************ SUBMISSION FORM -->
-                <p>Emotions selected for this game:</p>
-                <form>
+                <p class="main-text">Emotions selected for this game:</p>
+                <p>
+                <form method="POST" action="{% url 'post_review' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="main-container">
                         <div class="tag-container">
                         </div>
                     </div>
-                    <input id="pk-list" type="hidden" value="">
+                    <div class="text-center">
+                        <input id="pk-list" type="hidden" value="">
+                        <button class="btn btn-large btn-dark" type="submit">Submit</button>
+                    </div>
                 </form>
-                    <button class="btn btn-dark" type="" onclick="printTags()">Submit</button>
-                
+                </p>
+
             </div>
         </div>
     </div>

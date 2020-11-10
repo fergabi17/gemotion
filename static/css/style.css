@@ -9,6 +9,12 @@ h2 {
     margin-top: 5vh;
     margin-bottom: 5vh;
     font-family: 'Kanit', sans-serif;
+    font-weight: 300;
+}
+
+h3 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
 }
 
 
@@ -16,7 +22,6 @@ h2 {
 .navbar-brand{
     font-family: 'Bungee Inline', cursive;
     font-size: 21pt;
-
 }
 
 .nav-back {
@@ -31,6 +36,21 @@ h2 {
 /* ------------------------------------------------ CONTENT */
 .content-area{
     min-height: calc(100vh - 100px);
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 11pt;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 200;
+}
+
+.main-text{
+    text-align: center;
+    font-size: 14pt;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 300;
+    margin: 40px 0;
 }
 /* ------------------------------------------------ CARDS */
 

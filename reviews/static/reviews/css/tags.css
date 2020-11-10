@@ -1,4 +1,4 @@
-/* ------------------------------------------------ TAGS */
+
 
 .main-container {
     width: 40%;
@@ -6,9 +6,11 @@
 }
 
 .tag-container {
-    border: 2px solid #ccc;
+    border: 2px dashed rgb(66, 66, 66);
+    min-height: 60px;
+    height: calc(100vh - 750px);
     border-radius: 3px;
-    background: rgb(160, 56, 56);
+    background: rgb(37, 37, 37);
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;

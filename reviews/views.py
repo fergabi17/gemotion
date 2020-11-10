@@ -57,9 +57,12 @@ def review(request):
         }
 
         return render(request, 'reviews/review.html', context)
+    
 
-
-
+def post_review(request):
+    """
+    """
+    return render(request, 'games/index.html')
     
 
 
