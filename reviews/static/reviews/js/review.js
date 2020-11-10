@@ -1,8 +1,8 @@
 const TAG_CONTAINER = document.querySelector('.tag-container');
 const INPUT = document.querySelector('#emotion-input');
-
+// List of emotions to be rendered
 var tags = [];
-
+// List of emotions and categories from Database
 var emotions = {
     list: [],
     pk: [],
@@ -17,6 +17,7 @@ var emotions = {
     }
 }
 
+// Creates a tag html element for each emotion input
 function createTag(label){
     const DIV = document.createElement('div');
     const SPAN = document.createElement('span');
@@ -34,6 +35,7 @@ function createTag(label){
     return DIV;
 }
 
+// Adds html tags into the tag container
 function addTags(){
     reset();
     tags.slice().reverse().forEach( function(tag) {
@@ -42,22 +44,24 @@ function addTags(){
     })
 }
 
+// Clears the tag container
 function reset(){
     document.querySelectorAll('.tag').forEach( function(tag){
         tag.parentElement.removeChild(tag);
     })
 }
 
+// Prints the selected emotions PK as an input value to be submitted
 function printTags(){
     var pkInput = document.querySelector('#pk-list');
     var pkList = [];
     tags.forEach (function(tag) {
         pkList.push(emotions.pk[tag]);
     })
-    pkInput.value = pkList;
+    pkInput.value = JSON.stringify(pkList);
 }
 
-
+// Validates the user input, adds it and clear the input
 var addInput = function (e){
     if (e.key === 'Enter' || e === "onclick"){
         var userInput = INPUT.value.trim();

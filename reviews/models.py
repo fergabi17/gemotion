@@ -1,4 +1,6 @@
 from django.db import models
+from games.models import Game
+from profiles.models import UserProfile
 
 class Category(models.Model):
     
@@ -17,3 +19,12 @@ class Emotion(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Review(models.Model):
+    game = models.ForeignKey(Game, on_delete=models.DO_NOTHING)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='reviews')
+    emotion = models.ForeignKey(Emotion, on_delete=models.DO_NOTHING)
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f'{self.game} by {self.user_profile}'

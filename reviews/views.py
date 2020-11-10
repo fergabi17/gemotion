@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import JsonResponse
 from django.core import serializers
+from django.contrib import messages
 from .models import Emotion, Category
 from games.views import get_or_add_game
 import json
@@ -12,8 +13,7 @@ def review(request):
     Gets the game object and
     Creates a view for the review page
     """
-    
-        
+       
     if "term" in request.GET:
         em = Emotion.objects.filter(name__icontains=request.GET.get('term'))
         cat = Category.objects.filter(name__istartswith=request.GET.get('term'))
@@ -34,21 +34,11 @@ def review(request):
         for emotion in emotions_model:
             emotions_pk[emotion['fields']['name']] = emotion['pk']
 
-
-        
-        # emotions_array = []
-        
-        # for emotion in emotions_model:
-        #     emotions_array.append(str(emotion))
-        
-        # emotions = json.dumps(emotions_array)
-        
         categories_model = Category.objects.all()
         categories_array = []
         for category in categories_model:
             categories_array.append(str(category))
         categories = json.dumps(categories_array)
-        
         
         context = {
             'game': game,
@@ -62,7 +52,13 @@ def review(request):
 def post_review(request):
     """
     """
-    return redirect(reverse('profiles'))
+    result = request.POST['pk-list']
+    if result == "":
+        messages.error(request, "You can't post an empty review!")
+    else:
+        result = json.loads(result)
+        
+    return redirect(reverse('profile'))
     
 
 

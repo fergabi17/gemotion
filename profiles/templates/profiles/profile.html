@@ -3,14 +3,20 @@
 
 {% block content %}
 <div class="container content-area">
-
+    {% if request.user.is_authenticated %}
     <div class="row">
         <div class="col-12">
-            <h1>Profile</h1>
+            <h2>Profile</h2>
+            <h1>Thank you for your review {{ profile }}!</h1>
         </div>
     </div>
-
-
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Thank you for your review!</h1>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}
