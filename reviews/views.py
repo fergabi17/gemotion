@@ -3,7 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import JsonResponse
 from django.core import serializers
 from django.contrib import messages
-from .models import Emotion, Category
+from .models import Emotion, Category, Review
+from profiles.models import UserProfile
+from games.models import Game
 from games.views import get_or_add_game
 import json
 
@@ -58,6 +60,16 @@ def post_review(request):
     else:
         result = json.loads(result)
         
+        game_id = request.POST['game-id']
+        profile = get_object_or_404(UserProfile, user=request.user)
+        game = get_object_or_404(Game, pk=game_id)
+        for pk in result:
+            emotion = get_object_or_404(Emotion, pk=pk)
+            new_review = Review(game=game, 
+                            user_profile=profile, 
+                            emotion=emotion)
+            new_review.save()
+
     return redirect(reverse('profile'))
     
 

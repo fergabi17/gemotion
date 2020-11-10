@@ -8,7 +8,10 @@ def profile(request):
     Creates a view for the user's profile
     """
     profile = get_object_or_404(UserProfile, user=request.user)
+    reviews = profile.reviews.all()
+    
     context = {
-        'profile': profile
+        'profile': profile,
+        'reviews': reviews
     }
     return render(request, 'profiles/profile.html', context)
