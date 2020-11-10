@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import JsonResponse
 from django.core import serializers
 from .models import Emotion, Category
@@ -62,7 +62,7 @@ def review(request):
 def post_review(request):
     """
     """
-    return render(request, 'games/index.html')
+    return redirect(reverse('profiles'))
     
 
 
