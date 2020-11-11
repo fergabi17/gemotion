@@ -27,4 +27,4 @@ class Review(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f'{self.game} by {self.user_profile}'
+        return f'{self.game}'

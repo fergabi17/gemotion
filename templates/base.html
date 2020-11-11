@@ -54,10 +54,10 @@
                 {% if request.user.is_authenticated %}
                 <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                <a class="dropdown-item" href="{% url 'account_logout' %}">Sign out</a>
                 {% else %}
                 <a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a>
-                <a class="dropdown-item" href="{% url 'account_login' %}">Log in</a>
+                <a class="dropdown-item" href="{% url 'account_login' %}">Sign in</a>
                 {% endif %}
               </div>
             </li>
@@ -80,7 +80,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 p-2 text-center">
-            <p class="m-0">Created by Fernanda Cetnarovski | <a href="https://github.com/fergabi17"
+            <p class="m-0 text-white">Created by Fernanda Cetnarovski | <a href="https://github.com/fergabi17"
               target="_blank">GitHub</a></p>
           </div>
         </div>

@@ -1,34 +1,95 @@
 {% extends "base.html"%}
 {% load static %}
 
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'profiles/css/profile.css' %}">
+
+{% endblock %}
+
 {% block content %}
 <div class="container content-area">
-    {% if request.user.is_authenticated %}
     <div class="row">
+
+        <!-- ************************************************ AUTHENTICATED -->
+        {% if request.user.is_authenticated %}
+
         <div class="col-12">
-            <h2>Profile</h2>
+            <h2><i class="large material-icons">account_circle</i> Profile</h2>
+
+            {% if from_review %}
             <h1>Thank you for your review {{ profile }}!</h1>
+            {% endif %}
+
+            <h2 class="text-center">{{ profile|title }}'s overview</h2>
+
+            <div class="card-group">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-info">Number of games <br>reviewed</h5>
+                        <p class="card-text">{{ reviews }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last game reviewed: {{last_review}}</small>
+                    </div>
+                </div>
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-info">Top Emotion</h5>
+                        <p class="card-text">{{ top_emotion | title}}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            {% for game in games_top_emotions%}
+                            {{game}}<br>
+                            {% endfor %}
+                        </small>
+                    </div>
+                </div>
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-info">Top Category</h5>
+                        <p class="card-text">{{ top_category | title }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            {% for game in games_top_category %}
+                            {{game}}<br>
+                            {% endfor %}
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Games</h2>
+            
             <p>
-                Number of games reviewed: {{ reviews }}<br>
+                {% for game in game_names %}
+                {{ game }}<br>
+                {% endfor %}
             </p>
-            <p>
-                Game names: {{ game_names }}<br>
-            </p>
-            <p>
-                Top Emotion: {{ top_emotion}}
-            </p>
-            <p>
-                Top Category: {{ top_category }}
-            </p>
+            
+
+
         </div>
-    </div>
-    {% else %}
-    <div class="row">
+
+
+
+
+
+        <!-- ************************************************ NOT AUTHENTICATED -->
+        {% else %}
+
         <div class="col-12 text-center">
             <h1>Thank you for your review!</h1>
         </div>
+
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 
 {% endblock %}
