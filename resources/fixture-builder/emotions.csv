@@ -8,13 +8,13 @@ indignant,1,6,1,ANGRY,1
 infuriated,1,7,1,ANGRY,1
 pissed,1,8,1,ANGRY,1
 irritated,1,9,1,ANGRY,1
-insulted,1,10,1,ANGRY,1
+insulting/ed,1,10,1,ANGRY,1
 provoked,1,11,1,ANGRY,1
-offensive,1,12,1,ANGRY,1
+resentful,1,12,1,ANGRY,1
 a sense of loss,2,1,1,DEPRESSED,1
 terrible,2,2,1,DEPRESSED,1
 pessimistic,2,3,1,DEPRESSED,1
-gloomy,2,4,1,DEPRESSED,1
+despicable,2,4,1,DEPRESSED,1
 diminished,2,5,1,DEPRESSED,1
 discouraged,2,6,1,DEPRESSED,1
 beaten,2,7,1,DEPRESSED,1
@@ -30,11 +30,11 @@ disoriented,3,4,1,CONFUSED,1
 lost,3,5,1,CONFUSED,1
 perplexed,3,6,1,CONFUSED,1
 skeptical,3,7,1,CONFUSED,1
-indecisive,3,8,1,CONFUSED,1
+unbelieving,3,8,1,CONFUSED,1
 uncertain,3,9,1,CONFUSED,1
 uneasy,3,10,1,CONFUSED,1
-suspicious,3,11,1,CONFUSED,1
-embarrassed,3,12,1,CONFUSED,1
+indecisive,3,11,1,CONFUSED,1
+suspicious,3,12,1,CONFUSED,1
 alone,4,1,1,HELPLESS,1
 despair,4,2,1,HELPLESS,1
 not in control,4,3,1,HELPLESS,1
@@ -44,7 +44,7 @@ forced,4,6,1,HELPLESS,1
 frustrated,4,7,1,HELPLESS,1
 incapable,4,8,1,HELPLESS,1
 pathetic,4,9,1,HELPLESS,1
-desperate,4,10,1,HELPLESS,1
+vulnerable,4,10,1,HELPLESS,1
 distressed,4,11,1,HELPLESS,1
 useless,4,12,1,HELPLESS,1
 bored,5,1,1,INDIFFERENT,1
@@ -92,21 +92,21 @@ mournful,8,6,1,SAD,1
 heartbroken,8,7,1,SAD,1
 sorrowful,8,8,1,SAD,1
 down,8,9,1,SAD,1
-bitter,8,10,1,SAD,1
-tearful,8,11,1,SAD,1
-unpleasant,8,12,1,SAD,1
+unpleasant,8,10,1,SAD,1
+desperate,8,11,1,SAD,1
+tearful,8,12,1,SAD,1
 understanding,9,1,1,WELCOMING,2
 sympathetic,9,2,1,WELCOMING,2
-reliable,9,3,1,WELCOMING,2
+cosy,9,3,1,WELCOMING,2
 easy,9,4,1,WELCOMING,2
-amazed,9,5,1,WELCOMING,2
-satisfied,9,6,1,WELCOMING,2
+agreeable,9,5,1,WELCOMING,2
+hospitable,9,6,1,WELCOMING,2
 accepting,9,7,1,WELCOMING,2
 kind,9,8,1,WELCOMING,2
 peaceful,9,9,1,WELCOMING,2
 calm,9,10,1,WELCOMING,2
 at ease,9,11,1,WELCOMING,2
-,9,12,0,WELCOMING,2
+receptive,9,12,1,WELCOMING,2
 great,10,1,1,HAPPY,2
 overjoyed,10,2,1,HAPPY,2
 festive,10,3,1,HAPPY,2
@@ -117,8 +117,8 @@ thankful,10,7,1,HAPPY,2
 ecstatic,10,8,1,HAPPY,2
 jubilant,10,9,1,HAPPY,2
 enthusiastic,10,10,1,HAPPY,2
-,10,11,0,HAPPY,2
-,10,12,0,HAPPY,2
+satisfied,10,11,1,HAPPY,2
+joyful,10,12,1,HAPPY,2
 frisky,11,1,1,ALIVE,2
 courageous,11,2,1,ALIVE,2
 provocative,11,3,1,ALIVE,2
@@ -141,8 +141,8 @@ reassured,12,7,1,GOOD,2
 relaxed,12,8,1,GOOD,2
 bright,12,9,1,GOOD,2
 comforted,12,10,1,GOOD,2
-,12,11,0,GOOD,2
-,12,12,0,GOOD,2
+nice,12,11,1,GOOD,2
+well,12,12,1,GOOD,2
 loving,13,1,1,LOVE,2
 considerate,13,2,1,LOVE,2
 affectionate,13,3,1,LOVE,2
@@ -153,8 +153,8 @@ attracted,13,7,1,LOVE,2
 passionate,13,8,1,LOVE,2
 admiration,13,9,1,LOVE,2
 drawn toward,13,10,1,LOVE,2
-,13,11,0,LOVE,2
-,13,12,0,LOVE,2
+enthralled,13,11,1,LOVE,2
+enamoured,13,12,1,LOVE,2
 concerned,14,1,1,INTERESTED,2
 affected,14,2,1,INTERESTED,2
 fascinated,14,3,1,INTERESTED,2
@@ -162,13 +162,13 @@ intrigued,14,4,1,INTERESTED,2
 absorbed,14,5,1,INTERESTED,2
 inquisitive,14,6,1,INTERESTED,2
 surprised,14,7,1,INTERESTED,2
-snoopy,14,8,1,INTERESTED,2
+involved,14,8,1,INTERESTED,2
 engrossed,14,9,1,INTERESTED,2
 curious,14,10,1,INTERESTED,2
-,14,11,0,INTERESTED,2
-,14,12,0,INTERESTED,2
+drawn in,14,11,1,INTERESTED,2
+invested,14,12,1,INTERESTED,2
 eager,15,1,1,POSITIVE,2
-daring,15,2,1,POSITIVE,2
+enlightening,15,2,1,POSITIVE,2
 challenged,15,3,1,POSITIVE,2
 optimistic,15,4,1,POSITIVE,2
 re-enforced,15,5,1,POSITIVE,2
@@ -185,9 +185,9 @@ rebellious,16,3,1,STRONG,2
 unique,16,4,1,STRONG,2
 dynamic,16,5,1,STRONG,2
 tenacious,16,6,1,STRONG,2
-hardy,16,7,1,STRONG,2
+tough,16,7,1,STRONG,2
 secure,16,8,1,STRONG,2
 earnest,16,9,1,STRONG,2
 brave,16,10,1,STRONG,2
-,16,11,0,STRONG,2
-,16,12,0,STRONG,2
+daring,16,11,1,STRONG,2
+powerful,16,12,1,STRONG,2

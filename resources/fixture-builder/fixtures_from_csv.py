@@ -5,11 +5,10 @@ import json
 def csv_to_dict(csv_file):
     """
     @csv_file: file
-    @field_name: string
-    @pattern: regex
+    @returns: array
     This method extracts info from a field on a csv
-    validated by a pattern. It returns an array of dicts 
-    containing the info, skipping duplicates
+    It returns an array of dicts 
+    containing the info
     """
     final_array = []
     reader = csv.DictReader(csv_file)

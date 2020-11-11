@@ -75,7 +75,7 @@
         "pk": 10,
         "model": "reviews.emotion",
         "fields": {
-            "name": "insulted",
+            "name": "insulting/ed",
             "category": 1
         }
     },
@@ -91,7 +91,7 @@
         "pk": 12,
         "model": "reviews.emotion",
         "fields": {
-            "name": "offensive",
+            "name": "resentful",
             "category": 1
         }
     },
@@ -123,7 +123,7 @@
         "pk": 16,
         "model": "reviews.emotion",
         "fields": {
-            "name": "gloomy",
+            "name": "despicable",
             "category": 2
         }
     },
@@ -251,7 +251,7 @@
         "pk": 32,
         "model": "reviews.emotion",
         "fields": {
-            "name": "indecisive",
+            "name": "unbelieving",
             "category": 3
         }
     },
@@ -275,7 +275,7 @@
         "pk": 35,
         "model": "reviews.emotion",
         "fields": {
-            "name": "suspicious",
+            "name": "indecisive",
             "category": 3
         }
     },
@@ -283,7 +283,7 @@
         "pk": 36,
         "model": "reviews.emotion",
         "fields": {
-            "name": "embarrassed",
+            "name": "suspicious",
             "category": 3
         }
     },
@@ -363,7 +363,7 @@
         "pk": 46,
         "model": "reviews.emotion",
         "fields": {
-            "name": "desperate",
+            "name": "vulnerable",
             "category": 4
         }
     },
@@ -747,7 +747,7 @@
         "pk": 94,
         "model": "reviews.emotion",
         "fields": {
-            "name": "bitter",
+            "name": "unpleasant",
             "category": 8
         }
     },
@@ -755,7 +755,7 @@
         "pk": 95,
         "model": "reviews.emotion",
         "fields": {
-            "name": "tearful",
+            "name": "desperate",
             "category": 8
         }
     },
@@ -763,7 +763,7 @@
         "pk": 96,
         "model": "reviews.emotion",
         "fields": {
-            "name": "unpleasant",
+            "name": "tearful",
             "category": 8
         }
     },
@@ -787,7 +787,7 @@
         "pk": 99,
         "model": "reviews.emotion",
         "fields": {
-            "name": "reliable",
+            "name": "cosy",
             "category": 9
         }
     },
@@ -803,7 +803,7 @@
         "pk": 101,
         "model": "reviews.emotion",
         "fields": {
-            "name": "amazed",
+            "name": "agreeable",
             "category": 9
         }
     },
@@ -811,7 +811,7 @@
         "pk": 102,
         "model": "reviews.emotion",
         "fields": {
-            "name": "satisfied",
+            "name": "hospitable",
             "category": 9
         }
     },
@@ -859,7 +859,7 @@
         "pk": 108,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "receptive",
             "category": 9
         }
     },
@@ -947,7 +947,7 @@
         "pk": 119,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "satisfied",
             "category": 10
         }
     },
@@ -955,7 +955,7 @@
         "pk": 120,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "joyful",
             "category": 10
         }
     },
@@ -1139,7 +1139,7 @@
         "pk": 143,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "nice",
             "category": 12
         }
     },
@@ -1147,7 +1147,7 @@
         "pk": 144,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "well",
             "category": 12
         }
     },
@@ -1235,7 +1235,7 @@
         "pk": 155,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "enthralled",
             "category": 13
         }
     },
@@ -1243,7 +1243,7 @@
         "pk": 156,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "enamoured",
             "category": 13
         }
     },
@@ -1307,7 +1307,7 @@
         "pk": 164,
         "model": "reviews.emotion",
         "fields": {
-            "name": "snoopy",
+            "name": "involved",
             "category": 14
         }
     },
@@ -1331,7 +1331,7 @@
         "pk": 167,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "drawn in",
             "category": 14
         }
     },
@@ -1339,7 +1339,7 @@
         "pk": 168,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "invested",
             "category": 14
         }
     },
@@ -1355,7 +1355,7 @@
         "pk": 170,
         "model": "reviews.emotion",
         "fields": {
-            "name": "daring",
+            "name": "enlightening",
             "category": 15
         }
     },
@@ -1491,7 +1491,7 @@
         "pk": 187,
         "model": "reviews.emotion",
         "fields": {
-            "name": "hardy",
+            "name": "tough",
             "category": 16
         }
     },
@@ -1523,7 +1523,7 @@
         "pk": 191,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "daring",
             "category": 16
         }
     },
@@ -1531,7 +1531,7 @@
         "pk": 192,
         "model": "reviews.emotion",
         "fields": {
-            "name": "",
+            "name": "powerful",
             "category": 16
         }
     }
