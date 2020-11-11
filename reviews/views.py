@@ -53,13 +53,13 @@ def review(request):
 
 def post_review(request):
     """
+    Posts all the emotions as single inputs in the database
     """
     result = request.POST['pk-list']
     if result == "":
         messages.error(request, "You can't post an empty review!")
     else:
         result = json.loads(result)
-        
         game_id = request.POST['game-id']
         profile = get_object_or_404(UserProfile, user=request.user)
         game = get_object_or_404(Game, pk=game_id)
