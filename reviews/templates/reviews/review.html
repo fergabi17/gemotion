@@ -31,6 +31,16 @@
                 <hr>
 
                 <!-- ************************************************************ USER INPUT -->
+                {% if not request.user.is_authenticated %}
+                <div class="col-12">
+                    <p class="main-text p-2">Would you like to sign up to keep track of your data?
+                        <a class="btn btn-info" href="{% url 'account_signup' %}">Sign up</a>
+                        <a class="btn btn-dark" href="{% url 'account_login' %}">Sign in</a>
+                    </p>
+                </div>
+                
+                {% endif %}
+
                 <p class="main-text m-5">Tell us the emotions you had towards {{game.name}}:</p>
 
                 <div class="col-12 col-sm-6 offset-sm-3">
@@ -125,11 +135,8 @@
                     <form method="POST" action="{% url 'post_review' %}" class="form mb-2"
                         enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.non_field_errors }}
-
-
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                
+
                             <label class="btn btn-secondary active">
                                 <input type="radio" name="{{form.played.name}}" id="option0"
                                     value="{{form.played.field.widget.choices.0.0}}" checked="checked">
@@ -147,22 +154,25 @@
                                 </i><br>
                                 {{ form.played.field.widget.choices.1.1 }}
                             </label>
-                            
+
                         </div>
 
 
                         <div class="main-container">
                             <p class="main-text">Emotions selected for this game:</p>
-                            <div class="tag-container bg-dark">
-                                
+                            <div class="tag-container bg-dark col-12 col-sm-6 offset-sm-3">
+
                             </div>
                             {{ form.pk_list }}
                         </div>
                         <div class="text-center">
                             <input id="game-id" name="game-id" type="hidden" value="{{game.id}}">
-                            <!-- <input id="pk-list" name="pk-list" type="hidden" value=""> -->
-                            
+                            {% if request.user.is_authenticated %}
                             <button class="btn btn-large btn-info" type="submit" onclick="printTags()">Submit</button>
+                            {% else %}
+                            <button class="btn btn-small btn-outline-secondary" type="submit"
+                                onclick="printTags()">Submit (anonymous)</button>
+                            {% endif %}
                         </div>
 
                     </form>
