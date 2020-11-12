@@ -7,6 +7,7 @@ from .models import Emotion, Category, Review
 from profiles.models import UserProfile
 from games.models import Game
 from games.views import get_or_add_game
+from .forms import ReviewForm
 import json
 
 
@@ -27,6 +28,7 @@ def review(request):
         return JsonResponse(emotions, safe=False)
     else:
         game = get_or_add_game(request)
+        form = ReviewForm(request.POST)
         
         emotions_model = Emotion.objects.all()
         emotions_model = serializers.serialize("json", emotions_model)
@@ -45,7 +47,8 @@ def review(request):
         context = {
             'game': game,
             'emotions': json.dumps(emotions_pk),
-            'categories': categories
+            'categories': categories,
+            'form': form
         }
 
         return render(request, 'reviews/review.html', context)
@@ -55,18 +58,21 @@ def post_review(request):
     """
     Posts all the emotions as single inputs in the database
     """
-    result = request.POST['pk-list']
+    result = request.POST['pk_list']
     if result == "":
         messages.error(request, "You can't post an empty review!")
     else:
         result = json.loads(result)
         game_id = request.POST['game-id']
+        user_played = request.POST.get('played')
+        
         profile = get_object_or_404(UserProfile, user=request.user)
         game = get_object_or_404(Game, pk=game_id)
         for pk in result:
             emotion = get_object_or_404(Emotion, pk=pk)
             new_review = Review(game=game, 
-                            user_profile=profile, 
+                            user_profile=profile,
+                            played=user_played,
                             emotion=emotion)
             new_review.save()
 

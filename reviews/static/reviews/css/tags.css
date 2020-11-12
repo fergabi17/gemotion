@@ -3,14 +3,13 @@
 .main-container {
     width: 40%;
     margin: 30px auto;
+    position: relative;
 }
 
 .tag-container {
-    border: 2px dashed rgb(66, 66, 66);
     min-height: 60px;
     height: calc(100vh - 750px);
     border-radius: 3px;
-    background: rgb(37, 37, 37);
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -37,4 +36,11 @@
     color: #666;
     margin-left: 5px;
     cursor: pointer;
+}
+
+#pk-list {
+    position: absolute;
+    top:50%;
+    left:0;
+    z-index: -1;
 }

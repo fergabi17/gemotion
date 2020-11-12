@@ -20,6 +20,7 @@ class CategoryReview(admin.ModelAdmin):
         'date',
         'game',
         'user_profile',
+        'played',
         'emotion'
     ) 
 

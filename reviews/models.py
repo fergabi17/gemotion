@@ -24,6 +24,7 @@ class Review(models.Model):
     game = models.ForeignKey(Game, on_delete=models.DO_NOTHING)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='reviews')
     emotion = models.ForeignKey(Emotion, on_delete=models.DO_NOTHING)
+    played = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

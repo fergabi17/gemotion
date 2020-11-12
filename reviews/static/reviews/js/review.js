@@ -58,7 +58,9 @@ function printTags(){
     tags.forEach (function(tag) {
         pkList.push(emotions.pk[tag]);
     })
-    pkInput.value = JSON.stringify(pkList);
+    if (pkList.length > 0){
+        pkInput.value = JSON.stringify(pkList);
+    }
 }
 
 // Validates the user input, adds it and clear the input
