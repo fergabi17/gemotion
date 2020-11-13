@@ -43,12 +43,13 @@ def review(request):
         categories_array = []
         for category in categories_model:
             categories_array.append(str(category))
-        categories = json.dumps(categories_array)
+        categories = categories_array
 
         context = {
             'game': game,
             'emotions': json.dumps(emotions_pk),
             'categories': categories,
+            'categories_model': categories_model,
             'form': form
         }
 
@@ -68,20 +69,26 @@ def post_review(request):
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
         game = get_object_or_404(Game, pk=game_id)
+        user_game_reviews = Review.objects.filter(game=game,
+                                                  user_profile=profile)
+        reviews_emotions = list(
+            user_game_reviews.values_list('emotion__name', flat=True))
+
         for pk in result:
             emotion = get_object_or_404(Emotion, pk=pk)
-            new_review = Review(game=game,
-                                user_profile=profile,
-                                played=user_played,
-                                emotion=emotion)
-            new_review.save()
+            if str(emotion) not in reviews_emotions:
+                new_review = Review(game=game,
+                                    user_profile=profile,
+                                    played=user_played,
+                                    emotion=emotion)
+                new_review.save()
     else:
         game = get_object_or_404(Game, pk=game_id)
         for pk in result:
             emotion = get_object_or_404(Emotion, pk=pk)
             new_review = Review(game=game,
+
                                 played=user_played,
                                 emotion=emotion)
             new_review.save()
     return redirect(reverse('profile'))
-

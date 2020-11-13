@@ -52,9 +52,9 @@
                     <div class="card-footer">
                         <small class="text-muted">
                             {% if request.user.is_authenticated %}
-                            {% for game in games_top_emotions%}
+                            {% for game in games_top_emotions %}
                             {{game}}<br>
-                            {% endfor %}}
+                            {% endfor %}
                             {%else%}
                             {{games_top_emotions}}
                             {% endif %}

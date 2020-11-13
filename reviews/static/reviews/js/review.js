@@ -67,7 +67,7 @@ function printTags(){
 var addInput = function (e){
     if (e.key === 'Enter' || e === "onclick"){
         var userInput = INPUT.value.trim();
-        if (emotions.list.includes(userInput)){
+        if (emotions.list.includes(userInput) && !tags.includes(userInput)){
             tags.push(INPUT.value);
             addTags();
             INPUT.value = '';

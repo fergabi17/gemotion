@@ -38,7 +38,7 @@
                         <a class="btn btn-dark" href="{% url 'account_login' %}">Sign in</a>
                     </p>
                 </div>
-                
+
                 {% endif %}
 
                 <p class="main-text m-5">Tell us the emotions you had towards {{game.name}}:</p>
@@ -65,65 +65,15 @@
                     </button>
                 </div>
 
+                <div class="col-12 collapse text-center mb-3" id="collapseExample">
+                    {% for category in categories %}
+                    <button class="btn btn-secondary m-1" data-toggle="collapse" data-target="#emotion-by-category"
+                         aria-controls="emotion-by-category" aria-expanded="false">{{category}}</button>
+                    {% endfor %}
 
-                <div class="col-12 col-sm-6 collapse" id="collapseExample">
-
-                    <div class="accordion" id="accordionExample">
-
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left" type="button"
-                                        data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                        aria-controls="collapseOne">
-                                        {{categories}}
-                                    </button>
-                                </h2>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    emotions
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        category
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    emotions
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        category
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    emotions
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="col-12 collapse" id="emotion-by-category">
+                        <p>{{categories_model}}</p>
+                        <button></button>
                     </div>
                 </div>
 
