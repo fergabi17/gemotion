@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from games.models import Game
-from reviews.models import Category, Emotion
+from reviews.models import Category, Emotion, Review
 from django.db.models import Count, F
 
 # @login_required
@@ -56,3 +56,15 @@ def profile(request):
     }
 
     return render(request, 'profiles/profile.html', context)
+
+
+def delete_review(request, game):
+    """
+    Deletes a review from the database
+    """
+    profile = get_object_or_404(UserProfile, user=request.user)
+    game = get_object_or_404(Game, name=game)
+    reviews = Review.objects.filter(game=game,
+                                    user_profile=profile)
+    reviews.delete()
+    return redirect(reverse('profile'))

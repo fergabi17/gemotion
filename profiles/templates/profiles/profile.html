@@ -89,7 +89,8 @@
             {% if request.user.is_authenticated %}
             <p>
                 {% for game in game_names %}
-                {{ game }}<br>
+                {{ game }} 
+                <a href="{% url 'delete_review' game %}" class="small">delete</a><br>
                 {% endfor %}
             </p>
             {% else %}

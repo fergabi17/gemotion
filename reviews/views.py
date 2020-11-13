@@ -87,8 +87,10 @@ def post_review(request):
         for pk in result:
             emotion = get_object_or_404(Emotion, pk=pk)
             new_review = Review(game=game,
-
+                                user_profile=profile,
                                 played=user_played,
                                 emotion=emotion)
             new_review.save()
     return redirect(reverse('profile'))
+
+
