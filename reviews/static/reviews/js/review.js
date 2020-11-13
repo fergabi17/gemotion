@@ -1,5 +1,6 @@
 const TAG_CONTAINER = document.querySelector('.tag-container');
 const INPUT = document.querySelector('#emotion-input');
+
 // List of emotions to be rendered
 var tags = [];
 // List of emotions and categories from Database
@@ -64,19 +65,20 @@ function printTags(){
 }
 
 // Validates the user input, adds it and clear the input
-var addInput = function (e){
-    if (e.key === 'Enter' || e === "onclick"){
-        var userInput = INPUT.value.trim();
+var addInput = function (e, emotion){
+    if (e.key === 'Enter' || e === "onclick" || e ==='byCategory'){
+        var userInput = e ==='byCategory' ? emotion : INPUT.value.trim();
         if (emotions.list.includes(userInput) && !tags.includes(userInput)){
-            tags.push(INPUT.value);
+            tags.push(userInput);
             addTags();
             INPUT.value = '';
+            // $('.collapse').removeClass('show');
         } else if (emotions.categories.includes(userInput)){
             INPUT.value = 'category';
         } else {
             INPUT.value = '';
         }
- 
+        
     }
 }
 

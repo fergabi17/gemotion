@@ -67,14 +67,21 @@
 
                 <div class="col-12 collapse text-center mb-3" id="collapseExample">
                     {% for category in categories %}
-                    <button class="btn btn-secondary m-1" data-toggle="collapse" data-target="#emotion-by-category"
+                    <button class="btn btn-secondary m-1" data-toggle="collapse" data-target="#emotion-by-category-{{ forloop.counter }}"
                          aria-controls="emotion-by-category" aria-expanded="false">{{category}}</button>
                     {% endfor %}
 
-                    <div class="col-12 collapse" id="emotion-by-category">
-                        <p>{{categories_model}}</p>
-                        <button></button>
+                    {% for category in categories_model %}
+                    <div class="col-12 collapse" id="emotion-by-category-{{ category.pk }}" data-parent="#collapseExample">
+                       
+                       {% for em in emotions_model %}
+                       {% if em.fields.category == category.pk %}
+                       <button class="btn btn-warning m-1" onclick="addInput('byCategory', '{{em.fields.name}}')">{{em.fields.name}}</button>
+                       {% endif %}
+                       {% endfor %}
+                        
                     </div>
+                    {% endfor %}
                 </div>
 
 

@@ -43,14 +43,18 @@ def review(request):
         categories_array = []
         for category in categories_model:
             categories_array.append(str(category))
-        categories = categories_array
+        categories_model = serializers.serialize("json", categories_model)
+        categories_model = json.loads(categories_model)
+
 
         context = {
             'game': game,
             'emotions': json.dumps(emotions_pk),
-            'categories': categories,
+            'categories': categories_array,
             'categories_model': categories_model,
-            'form': form
+            'form': form,
+            
+            'emotions_model': emotions_model
         }
 
         return render(request, 'reviews/review.html', context)
