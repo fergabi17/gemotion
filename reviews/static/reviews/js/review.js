@@ -25,7 +25,7 @@ function createTag(label){
 
     DIV.setAttribute('class', 'tag');
     SPAN.innerHTML = label;
-    CLOSE_BTN.setAttribute('class', 'material-icons');
+    CLOSE_BTN.setAttribute('class', 'material-icons close-button');
     CLOSE_BTN.setAttribute('data-item', label);
     CLOSE_BTN.innerHTML = 'close';
 
@@ -83,7 +83,8 @@ var addInput = function (e){
 INPUT.addEventListener('keyup', addInput);
 
 document.addEventListener('click', function(e){
-    if (e.target.tagName === "I"){
+    var clickedClass = e.target.className;
+    if (e.target.tagName === "I" && clickedClass == 'material-icons close-button'){
         const TAG_LABEL = e.target.getAttribute('data-item');
         const INDEX = tags.indexOf(TAG_LABEL);
         tags = [... tags.slice(0, INDEX), ... tags.slice(INDEX + 1)];
