@@ -1,0 +1,49 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+<div class="container content-area">
+
+    <div class="row">
+        <div class="col-12">
+            <!-- ************************************************************ TOP -->
+            <h2>Chose a game</h2>
+
+            <p>Filter element here</p>
+            <hr>
+
+            <!-- ************************************************************ CARDS -->
+
+            {% for game in games %}
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <img src="{{game.0.background_image}}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{game.0.name}}</h5>
+                            <p class="text-muted mb-5">
+                                Released on {{game.0.released | slice:"5:7"}}.{{game.0.released | slice:"0:4"}}
+                            </p>
+                            
+                            <p class="card-text pt-4"><small class="text-muted">Last reviewed on {{game.1}}</small></p>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- ************************************************************ EMPTY SEARCH -->
+
+
+            <a href="#">Back to top</a>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -46,14 +46,13 @@ def review(request):
         categories_model = serializers.serialize("json", categories_model)
         categories_model = json.loads(categories_model)
 
-
         context = {
             'game': game,
             'emotions': json.dumps(emotions_pk),
             'categories': categories_array,
             'categories_model': categories_model,
             'form': form,
-            
+
             'emotions_model': emotions_model
         }
 
@@ -98,3 +97,25 @@ def post_review(request):
     return redirect(reverse('profile'))
 
 
+def review_list(request):
+    """
+    Renders the list of games last reviewed on the webapp
+    """
+    reviews = Review.objects.values_list("game", "date").order_by('-date')
+    # reviews = Review.objects.values_list("game").filter(emotion__category__name='happy').order_by('-date')
+    presented_games = []
+    for review in reviews:
+        if not any(review[0] in i for i in presented_games):
+            presented_games.append(review)
+            if len(presented_games) >= 10:
+                break
+    print(presented_games)
+    games = []
+    for game in presented_games:
+        game_dict = get_object_or_404(Game, pk=game[0])
+        last_reviewed = game[1]
+        games.append((game_dict, last_reviewed))
+    context = {
+        'games': games,
+    }
+    return render(request, 'reviews/review_list.html', context)
