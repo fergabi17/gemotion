@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import JsonResponse
 from django.core import serializers
 from django.contrib import messages
+from collections import Counter
 from .models import Emotion, Category, Review
 from profiles.models import UserProfile
 from games.models import Game
@@ -109,7 +110,7 @@ def review_list(request):
             presented_games.append(review)
             if len(presented_games) >= 10:
                 break
-    print(presented_games)
+
     games = []
     for game in presented_games:
         game_dict = get_object_or_404(Game, pk=game[0])
@@ -119,3 +120,29 @@ def review_list(request):
         'games': games,
     }
     return render(request, 'reviews/review_list.html', context)
+
+
+def game_reviews(request, game_id):
+    """
+    Renders the game details page
+    with the statistics from reviews
+    """
+    game = get_object_or_404(Game, pk=game_id)
+    reviews = Review.objects.filter(game=game_id)
+    emotions = reviews.values_list("emotion__name")
+    emotions_count = Counter(emotions).most_common()
+    categories = reviews.values_list("emotion__category__name")
+    categories_count = Counter(categories).most_common()
+    played = reviews.values_list("played", "user_profile__user__username").distinct()
+    played_count = Counter(True in i for i in played)
+    
+    context= {
+        'game': game,
+        'users_reviewed': len(played),
+        'emotions_count': emotions_count,
+        'categories_count': categories_count,
+        'played': played,
+        'played_count': played_count
+        
+    }
+    return render(request, 'reviews/game_reviews.html', context)

@@ -82,5 +82,8 @@ a:hover {
 }
 
 
-
+.minha-classe {
+    background-color: rgba(0, 0, 77, 0.5);
+    border: 3px dashed;
+}
 

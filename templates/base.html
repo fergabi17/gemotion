@@ -63,9 +63,12 @@
             </li>
           </ul>
           
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search a game</button>
+          <form method="POST" action="{% url 'game_list' %}" class="form-inline my-2 my-lg-0" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <input type="text" class="form-control mr-sm-2" name="game-title" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search game</button>
+
           </form>
         </div>
       </nav>

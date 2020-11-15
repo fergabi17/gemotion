@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container content-area">
+
+    <div class="row">
+        <div class="col-12">
+            <h2><i class="large material-icons">account_circle</i> Game Review</h2>
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <p>{{game}}</p>
+            <p>Number of users that reviewed this game: {{users_reviewed}}</p>
+            <p>Emotions count: {{emotions_count}}</p>
+            <p>Categories count: {{categories_count}}</p>
+            <p>Played: {{played}}</p>
+            <p>Played count: {{played_count}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
