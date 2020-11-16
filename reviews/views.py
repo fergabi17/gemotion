@@ -127,7 +127,14 @@ def game_reviews(request, game_id):
     Renders the game details page
     with the statistics from reviews
     """
-    game = get_object_or_404(Game, pk=game_id)
+    path = request.META.get('HTTP_REFERER')
+
+    if "/game_list/" in path:
+        game = get_object_or_404(Game, game_id=game_id)
+        game_id = game.pk
+    else:
+        game = get_object_or_404(Game, pk=game_id)
+        
     reviews = Review.objects.filter(game=game_id)
     emotions = reviews.values_list("emotion__name")
     emotions_count = Counter(emotions).most_common()

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Game
+from reviews.models import Review
 
 import http.client
 import urllib.parse
@@ -21,10 +22,13 @@ def search_game(request):
     """
     input_game_title = request.POST['game-title']
     result = call_RAWG(request, "search")["results"]
+    games_reviewed = list(Review.objects.values_list("game__game_id").distinct())
+    games_reviewed = [ i[0] for i in games_reviewed ]
     
     context = {
         "search_term": input_game_title,
-        "content": result
+        "content": result,
+        "games_reviewed": games_reviewed
     }
 
     return render(request, 'games/game-list.html', context)

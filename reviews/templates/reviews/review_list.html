@@ -1,6 +1,10 @@
 {% extends "base.html"%}
 {% load static %}
 
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+
 {% block extra_js%}
 <script type="text/javascript">
     function topFunction() {
@@ -78,8 +82,10 @@
                                 Released on {{game.0.released | slice:"5:7"}}.{{game.0.released | slice:"0:4"}}
                             </p>
 
-                            <a class="btn btn-sm btn-outline-info stretched-link mb-2"
-                                href="{% url 'game_reviews' game.0.id%}">Check this game
+                            <a class="btn btn-outline-danger stretched-link mb-2"
+                                href="{% url 'game_reviews' game.0.id%}">
+                                <i class="material-icons tiny" style="vertical-align: middle !important;">star</i>
+                                Check reviews
                             </a>
 
                             <p class="card-text m-0"><small class="text-muted">Last reviewed on {{game.1}}</small></p>
