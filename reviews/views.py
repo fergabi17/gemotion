@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import JsonResponse
 from django.core import serializers
 from django.contrib import messages
-from collections import Counter
+from collections import Counter, OrderedDict
 from .models import Emotion, Category, Review
 from profiles.models import UserProfile
 from games.models import Game
@@ -136,20 +136,48 @@ def game_reviews(request, game_id):
         game = get_object_or_404(Game, pk=game_id)
         
     reviews = Review.objects.filter(game=game_id)
+    users = reviews.values_list("user_profile__user__username").distinct()
+    
     emotions = reviews.values_list("emotion__name")
-    emotions_count = Counter(emotions).most_common()
+    emotions_count = Counter(emotions).most_common(10)
+    emotions_count = { item[0][0] : item[1] for item in emotions_count }
+    emotions_percentage = get_dict_percentages(emotions_count, len(reviews))
+    
+    categories_model = Category.objects.all()
+    categories_final = {}
+    for category in categories_model:
+        categories_final[str(category)] = 0
+
     categories = reviews.values_list("emotion__category__name")
     categories_count = Counter(categories).most_common()
+    categories_count = { item[0][0] : item[1] for item in categories_count }
+
+    for item in categories_final:
+        if item in categories_count:
+            categories_final[item] = categories_count[item]
+    categories_percentage = get_dict_percentages(categories_final, len(reviews))
+    
     played = reviews.values_list("played", "user_profile__user__username").distinct()
     played_count = Counter(True in i for i in played)
+    played_count = { 'played': played_count[True], 'watched': played_count[False] }
+    played_percentage = get_dict_percentages(played_count, sum(played_count.values()))
     
     context= {
         'game': game,
-        'users_reviewed': len(played),
-        'emotions_count': emotions_count,
-        'categories_count': categories_count,
-        'played': played,
-        'played_count': played_count
-        
+        'users_reviewed': len(users),
+        'categories_percentage': json.dumps(categories_percentage),
+        'emotions_percentage': json.dumps(emotions_percentage),
+        'played_percentage': played_percentage,
     }
     return render(request, 'reviews/game_reviews.html', context)
+
+
+# ------------------------------------------------------- Helper functions
+
+def percentage(part, whole):
+  return int(100 * part/whole)
+
+def get_dict_percentages(numbers_dict, reviews):
+    for key in numbers_dict:
+        numbers_dict[key] = percentage(numbers_dict[key], reviews)
+    return numbers_dict

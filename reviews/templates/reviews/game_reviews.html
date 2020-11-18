@@ -5,25 +5,76 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="{% static 'js/charts.js' %}"></script>
+{% endblock %}
+
 {% block content %}
-<div class="container content-area">
+<div class="container-fluid content-area"
+    style="background-image:url('{{game.background_image}}');background-size: cover;">
 
-    <div class="row">
-        <div class="col-12">
-            <h2><i class="large material-icons">account_circle</i> Game Review</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-12" style="background-color:rgba(255, 255, 255, 0.6)">
+
+                <!-- ************************************************************ TOP -->
+                <h2><i class="large material-icons">games</i> Game Reviews</h2>
+                <h3 class="text-center">{{game.name}}</h3>
+                <p class="intro-text">
+                    Platform(s): {{game.platforms}}<br>
+                    Genre(s): {{game.genre}}
+                </p>
+                <hr>
+
+                <!-- ************************************************************ PLAYED -->
+                <div class="row">
+                    <div class="col-8 offset-2 col-sm-3 offset-sm-0 p-3 mb-5">
+                        <h6 class="card-title text-center">Played x Watched</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center">
+                            {% if played_percentage.watched > played_percentage.played %}
+                            {{played_percentage.watched}}% watched
+                            {% else %}
+                            {{played_percentage.played}}% played
+                            {% endif %}
+                        </h6>
+                        <div class="container" style="width: 80%">
+                            <canvas id="played-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- ************************************************************ CATEGORIES -->
+
+                    <div class="col-12 col-sm-6 p-0 mb-5">
+                        <h6 class="card-title text-center">Main Categories</h6>
+                        <div class="container p-1">
+                            <canvas id="category-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- ************************************************************ EMOTIONS -->
+
+
+                    <div class="col-12 col-sm-3 pl-0 mb-5 text-center">
+                        <h6 class="card-title">Main Emotions</h6>
+                        <div class="container">
+                            <canvas id="emotions-chart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-    </div>
 
-    <div class="row">
-        <div class="col-12">
-            <p>{{game}}</p>
-            <p>Number of users that reviewed this game: {{users_reviewed}}</p>
-            <p>Emotions count: {{emotions_count}}</p>
-            <p>Categories count: {{categories_count}}</p>
-            <p>Played: {{played}}</p>
-            <p>Played count: {{played_count}}</p>
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block postLoad_js %}
+<script>
+    populateAndCreateChart("{{played_percentage}}", playedChart);
+    populateAndCreateChart("{{categories_percentage}}", categoryChart);
+    populateAndCreateChart("{{emotions_percentage}}", emotionsChart);
+</script>
 {% endblock %}
