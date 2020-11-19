@@ -82,13 +82,22 @@
                                 Released on {{game.0.released | slice:"5:7"}}.{{game.0.released | slice:"0:4"}}
                             </p>
 
-                            <a class="btn btn-outline-danger stretched-link mb-2"
-                                href="{% url 'game_reviews' game.0.id%}">
+                            <a class="btn btn-outline-danger" href="{% url 'game_reviews' game.0.id%}">
                                 <i class="material-icons tiny" style="vertical-align: middle !important;">star</i>
                                 Check reviews
                             </a>
+                            <form method="POST" action="{% url 'review' %}" class="form d-inline"
+                                enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="game-id" value='{{game.0.id}}'>
+                                <button class="btn btn-outline-info" type="submit">
+                                    <i class="material-icons tiny"
+                                        style="vertical-align: middle !important;">rate_review</i>
+                                    Review this!
+                                </button>
+                            </form>
 
-                            <p class="card-text m-0"><small class="text-muted">Last reviewed on {{game.1}}</small></p>
+                            <p class="card-text mt-2"><small class="text-muted">Last reviewed on {{game.1}}</small></p>
                         </div>
                     </div>
                 </div>

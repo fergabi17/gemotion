@@ -29,9 +29,14 @@ def review(request):
             emotions.append(emotion.name)
         return JsonResponse(emotions, safe=False)
     else:
-        game = get_or_add_game(request)
-        form = ReviewForm(request.POST)
+        path = request.META.get('HTTP_REFERER')
 
+        if "/review_list/" in path:
+            game = get_object_or_404(Game, pk=request.POST["game-id"])
+        else:
+            game = get_or_add_game(request)
+            
+        form = ReviewForm(request.POST)
         emotions_model = Emotion.objects.all()
         emotions_model = serializers.serialize("json", emotions_model)
         emotions_model = json.loads(emotions_model)
