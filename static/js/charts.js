@@ -104,8 +104,6 @@ var categoryChart = {
     options: {
         scale: {
             ticks: {
-                beginAtZero: true,
-                // min: 0,
                 stepSize: 10
             },
             pointLabels: {
@@ -129,6 +127,13 @@ var categoryChart = {
             label: "",
             data: [],
             backgroundColor: ['rgba(91, 192, 222, 0.8)'],
+            borderColor: "rgba(200,0,0,0.6)",
+            radius: 6,
+            pointRadius: 6,
+            pointBorderWidth: 3,
+            pointBackgroundColor: "white",
+            pointBorderColor: "rgba(200,0,0,0.6)",
+            pointHoverRadius: 10,
             borderWidth: 1,
             borderColor: 'rgba(255,255,255,0.0)',
             hoverBorderWidth: 2,

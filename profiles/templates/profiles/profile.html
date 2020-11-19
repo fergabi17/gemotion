@@ -87,12 +87,15 @@
 
 
             {% if request.user.is_authenticated %}
-            <p>
-                {% for game in game_names %}
-                {{ game }} 
-                <a href="{% url 'delete_review' game %}" class="small">delete</a><br>
-                {% endfor %}
+
+            {% for game in games %}
+            <p class="mb-1">
+            <a href="{% url 'game_reviews' game.game %}" class="btn-sm btn-secondary">{{ game.game__name }}</a>
+
+            <a href="{% url 'delete_review' game %}" class="small">delete</a><br>
             </p>
+            {% endfor %}
+
             {% else %}
             <p>?</p>
             <p>

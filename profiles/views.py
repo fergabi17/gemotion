@@ -17,8 +17,9 @@ def profile(request):
         profile = get_object_or_404(UserProfile, user=request.user)
         reviews = profile.reviews.all()
 
-        games = reviews.values_list('game__name', flat=True).distinct()
-        games_reviewed = len(games)
+        games = reviews.values('game__name', 'game').distinct()
+        games_names = reviews.values_list('game__name', flat=True).distinct()
+        games_reviewed = len(games_names)
 
         top_emotions = reviews.values_list('emotion__name').annotate(
             emotion_count=Count('emotion')).order_by('-emotion_count')
@@ -46,8 +47,9 @@ def profile(request):
         
     context = {
         'profile': profile,
+        'games': games,
         'reviews': games_reviewed,
-        'game_names': games,
+        'game_names': games_names,
         'top_emotion': top_emotion,
         'games_top_emotions': games_top_emotions,
         'top_category': top_category,
