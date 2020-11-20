@@ -50,7 +50,7 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="game-id" value='{{game.id}}'>
                                 <input type="hidden" name="edit-game" value='{{game.id}}'>
-                                <button class="btn btn-danger mt-2" type="submit">
+                                <button class="btn btn-secondary mt-2" type="submit">
                                     <i class="material-icons tiny"
                                         style="vertical-align: middle !important;">create</i>
                                         Edit my review
@@ -61,7 +61,7 @@
                                 enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <input type="hidden" name="game-id" value='{{game.id}}'>
-                                <button class="btn-sm btn-info mt-2" type="submit">
+                                <button class="btn-sm btn-secondary mt-2" type="submit">
                                     <i class="material-icons tiny"
                                         style="vertical-align: middle !important;">rate_review</i>
                                     Review this!

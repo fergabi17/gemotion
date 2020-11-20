@@ -11,6 +11,11 @@
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
+    function sortBy(term, type) {
+        var currentUrl = new URL(window.location);
+        currentUrl.searchParams.set(type, term);
+        window.location.replace(currentUrl);
+    }
 </script>
 {% endblock %}
 
@@ -22,47 +27,79 @@
             <!-- ************************************************************ TOP -->
             <h2>Chose a game</h2>
 
-
             <div class="row">
-                <div class="col-5 col-sm-8 p-0">
-                    <p class="text-right pt-1 text-secondary"><small>You are seeing:</small></p>
-                </div>
-                <div class="col-7 col-sm-4">
-                    <div class="sort-select-wrapper">
+                <div class="col-12 text-center" id="sorting">
 
-                        <select id="sort-selector"
-                            class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
-                            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Latest
-                                Reviews
-                            </option>
-                            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price
-                                (low to high)</option>
-                            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price
-                                (high to low)</option>
-                            <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>
-                                Rating (low to high)</option>
-                            <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>
-                                Rating (high to low)</option>
-                            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name
-                                (A-Z)</option>
-                            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name
-                                (Z-A)</option>
-                            <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>
-                                Category (A-Z)</option>
-                            <option value="category_desc"
-                                {% if current_sorting == 'category_desc' %}selected{% endif %}>
-                                Category (Z-A)</option>
-                        </select>
+                    <!-- ************************************************************ sort: LATEST -->
+                    <a class="btn btn-sm {% if sorting == 'latest'%}btn-outline-secondary{% else %}btn-info{% endif %}"
+                        type="button" href="{% url 'review_list' %}">
+                        latest reviews
+                    </a>
+
+                    <!-- ************************************************************ sort: CATEGORY -->
+                    <button
+                        class="btn btn-sm {% if sorting.0 == 'category'%}btn-outline-secondary{% else %}btn-info{% endif %}"
+                        type="button" data-toggle="collapse" data-target="#collapseCat" aria-expanded="false"
+                        aria-controls="collapseCat">
+                        choose by category
+                    </button>
+
+                    <!-- ************************************************************ sort: EMOTION -->
+                    <button
+                        class="btn btn-sm {% if sorting.0 == 'emotion'%}btn-outline-secondary{% else %}btn-info{% endif %}"
+                        type="button" data-toggle="collapse" data-target="#collapseEm" aria-expanded="false"
+                        aria-controls="collapseEm">
+                        choose by emotion
+                    </button>
+
+                    <!-- ************************************************************ collapse: CATEGORY -->
+                    <div class="col-12 collapse text-center mb-3" id="collapseCat" data-parent="#sorting">
+                        {% for category in categories %}
+                        <button class="btn btn-secondary m-1" onclick="sortBy('{{category}}', 'category')">
+                            {{category}}
+                        </button>
+                        {% endfor %}
                     </div>
+
+
+                    <!-- ************************************************************ collapse: EMOTION -->
+                    <div class="col-12 collapse text-center mb-3" id="collapseEm" data-parent="#sorting">
+                        {% for category in categories %}
+                        <button class="btn btn-secondary m-1" data-toggle="collapse"
+                            data-target="#emotion-by-category-{{ forloop.counter }}" aria-controls="emotion-by-category"
+                            aria-expanded="false">
+                            {{category}}
+                        </button>
+                        {% endfor %}
+
+                        {% for category in categories_model %}
+                        <div class="col-12 collapse" id="emotion-by-category-{{ category.pk }}"
+                            data-parent="#collapseEm">
+
+                            {% for em in emotions_model %}
+                            {% if em.fields.category == category.pk %}
+                            <button class="btn btn-warning m-1"
+                                onclick="sortBy('{{em.fields.name}}', 'emotion')">{{em.fields.name}}</button>
+                            {% endif %}
+                            {% endfor %}
+
+                        </div>
+                        {% endfor %}
+                    </div>
+
                 </div>
-
             </div>
-
-
-
-
-
-
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-right small mb-0">Sorting by:  
+                        {% if sorting == 'latest' %}
+                        latest reviews
+                        {% else %}
+                        {{sorting.1}}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
 
 
             <hr>
@@ -122,4 +159,30 @@
 {% block postloadjs %}
 {{ block.super }}
 
+<script type="text/javascript">
+    function sortBy(term, type) {
+        var currentUrl = new URL(window.location);
+        currentUrl.searchParams.set(type, term);
+    }
+    $('#sort-selector').change(function () {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        if (selectedVal != "reset") {
+            var sort = selectedVal.split("_")[0];
+            var direction = selectedVal.split("_")[1];
+
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+
+            window.location.replace(currentUrl);
+        } else {
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+
+            window.location.replace(currentUrl);
+        }
+    })
+</script>
 {% endblock %}
