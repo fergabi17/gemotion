@@ -36,7 +36,7 @@ var playedChart = {
         datasets: [{
             label: "Played chart label",
             data: [],
-            backgroundColor: ['rgba(91, 192, 222, 0.8)', 'rgba(255,255,255,0.2)'],
+            backgroundColor: ['rgba(91, 192, 222, 0.9)', 'rgba(255,255,255, 0.9)'],
             borderWidth: 1,
             borderColor: 'rgba(0,0,0,0.0)',
             hoverBorderWidth: 3,

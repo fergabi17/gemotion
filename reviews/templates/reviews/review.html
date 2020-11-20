@@ -19,10 +19,14 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12" style="background-color:rgba(255, 255, 255, 0.6)">
+            <div class="col-12" style="background-color:rgba(255, 255, 255, 0.7)">
 
                 <!-- ************************************************************ TOP -->
+                {% if edit_page %}
+                <h2><i class="large material-icons">create</i> Edit Review</h2>
+                {% else %}
                 <h2><i class="large material-icons">rate_review</i> Review</h2>
+                {% endif %}
                 <h3 class="text-center">{{game.name}}</h3>
                 <p class="intro-text">
                     Platform(s): {{game.platforms}}<br>
@@ -96,7 +100,14 @@
 
                             <label class="btn btn-secondary active">
                                 <input type="radio" name="{{form.played.name}}" id="option0"
-                                    value="{{form.played.field.widget.choices.0.0}}" checked="checked">
+                                    value="{{form.played.field.widget.choices.0.0}}" 
+                                    {% if edit_page %}
+                                    {% if edit_page.played %}
+                                    checked="checked"
+                                    {% endif%}
+                                    {% else %}
+                                    checked="checked"
+                                    {% endif %}>
                                 <i class="large material-icons">
                                     videogame_asset
                                 </i><br>
@@ -105,7 +116,12 @@
 
                             <label class="btn btn-secondary">
                                 <input type="radio" name="{{form.played.name}}" id="option1"
-                                    value="{{form.played.field.widget.choices.1.0}}">
+                                    value="{{form.played.field.widget.choices.1.0}}"
+                                    {% if edit_page %}
+                                    {% if not edit_page.played %}
+                                    checked="checked"
+                                    {% endif %}
+                                    {% endif %}>
                                 <i class="large material-icons">
                                     video_label
                                 </i><br>
@@ -124,8 +140,15 @@
                         </div>
                         <div class="text-center">
                             <input id="game-id" name="game-id" type="hidden" value="{{game.id}}">
+
+                            <!-- ************************************************************ LOGGED -->
                             {% if request.user.is_authenticated %}
+                            {% if edit_page %}
+                            <input name="edit-game" type="hidden" value="{{game.id}}">
+                            {% endif %}
                             <button class="btn btn-large btn-info" type="submit" onclick="printTags()">Submit</button>
+                            
+                            <!-- ************************************************************ NOT LOGGED -->
                             {% else %}
                             <button class="btn btn-small btn-outline-secondary" type="submit"
                                 onclick="printTags()">Submit (anonymous)</button>
@@ -134,7 +157,7 @@
 
                     </form>
                 </div>
-
+                
             </div>
         </div>
     </div>
@@ -149,10 +172,17 @@
 
 <script>
     $(function () {
+        // Autocomplete function from terms in the database
         $("#emotion-input").autocomplete({
             source: "{% url 'review' %}"
         });
+        // Load terms in database for input validation
         emotions.loadEmotions('{{emotions}}', '{{categories}}');
+        // Load tags if in edit page
+        if ('{{edit_page}}'){
+            tags = JSON.parse('{{edit_page.emotions}}'.replace(/(&#x27;)/g,"\""));
+            addTags();
+        }
     });
 </script>
 {% endblock %}

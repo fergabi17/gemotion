@@ -29,7 +29,7 @@
 
                 <!-- ************************************************************ PLAYED -->
                 <div class="row">
-                    <div class="col-8 offset-2 col-sm-3 offset-sm-0 p-3 mb-5">
+                    <div class="col-8 offset-2 col-sm-3 offset-sm-0 pl-3 mb-1">
                         <h6 class="card-title text-center">Played x Watched</h6>
                         <h6 class="card-subtitle mb-2 text-muted text-center">
                             {% if played_percentage.watched > played_percentage.played %}
@@ -41,11 +41,39 @@
                         <div class="container" style="width: 80%">
                             <canvas id="played-chart"></canvas>
                         </div>
+
+                        <!-- ************************************************************ BUTTONS -->
+                        <div class="text-center p-3">
+                            {% if request.user.is_authenticated and user.id in users %}
+                            <form method="POST" action="{% url 'review' %}" class="form d-inline"
+                                enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="game-id" value='{{game.id}}'>
+                                <input type="hidden" name="edit-game" value='{{game.id}}'>
+                                <button class="btn btn-danger mt-2" type="submit">
+                                    <i class="material-icons tiny"
+                                        style="vertical-align: middle !important;">create</i>
+                                        Edit my review
+                                </button>
+                            </form>
+                            {% else %}
+                            <form method="POST" action="{% url 'review' %}" class="form d-inline"
+                                enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="game-id" value='{{game.id}}'>
+                                <button class="btn-sm btn-info mt-2" type="submit">
+                                    <i class="material-icons tiny"
+                                        style="vertical-align: middle !important;">rate_review</i>
+                                    Review this!
+                                </button>
+                            </form>
+                            {% endif %}
+                        </div>
                     </div>
 
                     <!-- ************************************************************ CATEGORIES -->
 
-                    <div class="col-12 col-sm-6 p-0 mb-5">
+                    <div class="col-12 col-sm-6 p-0 mb-1">
                         <h6 class="card-title text-center">Main Categories</h6>
                         <div class="container p-1">
                             <canvas id="category-chart"></canvas>
@@ -55,7 +83,7 @@
                     <!-- ************************************************************ EMOTIONS -->
 
 
-                    <div class="col-12 col-sm-3 pl-0 mb-5 text-center">
+                    <div class="col-12 col-sm-3 pl-0 mb-1 text-center">
                         <h6 class="card-title">Main Emotions</h6>
                         <div class="container">
                             <canvas id="emotions-chart"></canvas>
@@ -66,6 +94,8 @@
             </div>
 
         </div>
+        
+
     </div>
 </div>
 

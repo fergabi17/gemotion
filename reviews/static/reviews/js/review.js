@@ -2,7 +2,7 @@ const TAG_CONTAINER = document.querySelector('.tag-container');
 const INPUT = document.querySelector('#emotion-input');
 
 // List of emotions to be rendered
-var tags = [];
+tags = [];
 // List of emotions and categories from Database
 var emotions = {
     list: [],
@@ -63,6 +63,7 @@ function printTags(){
         pkInput.value = JSON.stringify(pkList);
     }
 }
+
 
 // Validates the user input, adds it and clear the input
 var addInput = function (e, emotion){

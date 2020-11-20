@@ -29,10 +29,13 @@ def review(request):
             emotions.append(emotion.name)
         return JsonResponse(emotions, safe=False)
     else:
+        edit_page = False
         path = request.META.get('HTTP_REFERER')
 
-        if "/review_list/" in path:
+        if "/review_list/" in path or "/reviews/" in path:
             game = get_object_or_404(Game, pk=request.POST["game-id"])
+            if "edit-game" in request.POST:
+                edit_page = True
         else:
             game = get_or_add_game(request)
             
@@ -51,6 +54,17 @@ def review(request):
             categories_array.append(str(category))
         categories_model = serializers.serialize("json", categories_model)
         categories_model = json.loads(categories_model)
+        
+        if edit_page:
+            profile = get_object_or_404(UserProfile, user=request.user)
+            review = Review.objects.filter(game=request.POST["game-id"], user_profile=profile)
+            emotions = [ item[0] for item in review.values_list("emotion__name")]
+            played = [ item[0] for item in review.values_list("played")]
+            edit_page = {
+                'review': review,
+                'emotions': emotions,
+                'played': True in played
+            }
 
         context = {
             'game': game,
@@ -58,8 +72,9 @@ def review(request):
             'categories': categories_array,
             'categories_model': categories_model,
             'form': form,
-
-            'emotions_model': emotions_model
+            'emotions_model': emotions_model,
+            
+            'edit_page': edit_page
         }
 
         return render(request, 'reviews/review.html', context)
@@ -70,7 +85,6 @@ def post_review(request):
     Posts all the emotions as single inputs in the database
     """
     result = request.POST['pk_list']
-
     result = json.loads(result)
     game_id = request.POST['game-id']
     user_played = request.POST.get('played')
@@ -78,8 +92,15 @@ def post_review(request):
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
         game = get_object_or_404(Game, pk=game_id)
+
+        
+        
         user_game_reviews = Review.objects.filter(game=game,
                                                   user_profile=profile)
+        
+        if "edit-game" in request.POST:
+            user_game_reviews.delete()
+        
         reviews_emotions = list(
             user_game_reviews.values_list('emotion__name', flat=True))
 
@@ -141,7 +162,8 @@ def game_reviews(request, game_id):
         game = get_object_or_404(Game, pk=game_id)
         
     reviews = Review.objects.filter(game=game_id)
-    users = reviews.values_list("user_profile__user__username").distinct()
+    users = list(reviews.values_list("user_profile__user").distinct())
+    users = [item[0] for item in users]
     
     emotions = reviews.values_list("emotion__name")
     emotions_count = Counter(emotions).most_common(10)
@@ -169,12 +191,25 @@ def game_reviews(request, game_id):
     
     context= {
         'game': game,
+        'users': users,
         'users_reviewed': len(users),
         'categories_percentage': json.dumps(categories_percentage),
         'emotions_percentage': json.dumps(emotions_percentage),
         'played_percentage': played_percentage,
     }
     return render(request, 'reviews/game_reviews.html', context)
+
+
+def edit_review(request, game_id):
+    """
+    Renders the edit review game
+    """
+    
+    context = {
+        
+    }
+    
+    return render(request, 'reviews/edit_reviews.html', context)
 
 
 # ------------------------------------------------------- Helper functions
