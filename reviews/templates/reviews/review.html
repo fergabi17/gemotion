@@ -178,8 +178,10 @@
         });
         // Load terms in database for input validation
         emotions.loadEmotions('{{emotions}}', '{{categories}}');
+        console.log('{{edit_page}}')
         // Load tags if in edit page
-        if ('{{edit_page}}' === 'True'){
+        if ('{{edit_page}}' !== 'False'){
+            console.log("here")
             tags = JSON.parse('{{edit_page.emotions}}'.replace(/(&#x27;)/g,"\""));
             addTags();
         }
