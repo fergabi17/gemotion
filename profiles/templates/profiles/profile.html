@@ -4,19 +4,21 @@
 {% block extra_css %}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
 
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="{% static 'js/charts.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 <div class="container content-area">
     <div class="row">
 
-        <!-- ************************************************ AUTHENTICATED -->
-
-
         <div class="col-12">
             <h2><i class="large material-icons">account_circle</i> Profile</h2>
 
+            <!-- ************************************************ FROM REVIEW -->
             {% if from_review %}
             <h1>Thank you for your review {{ profile }}!</h1>
             {% endif %}
@@ -25,6 +27,7 @@
                 {{ profile|title }}'s statistics
             </h2>
 
+            <!-- ************************************************ CARDS PROFILE -->
             <div class="card-group">
                 <div class="card">
 
@@ -82,36 +85,48 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
 
-            <h2>Games</h2>
+                <!-- ************************************************ CHARTS -->
 
+                <div class="col-sm-8" id="chartArea">
+                    <h2 class="card-title text-center">Categories</h2>
+                        <div class="container p-1">
+                            <canvas id="profile-categories"></canvas>
+                        </div>
+                </div>
+                <!-- ************************************************ GAMES -->
+                <div class="col-sm-4">
+                    <h2>Games</h2>
+                    {% if request.user.is_authenticated %}
 
-            {% if request.user.is_authenticated %}
+                    {% for game in games %}
+                    <p class="mb-1">
+                        <a href="{% url 'game_reviews' game.game %}"
+                            class="btn-sm btn-secondary">{{ game.game__name }}</a>
 
-            {% for game in games %}
-            <p class="mb-1">
-            <a href="{% url 'game_reviews' game.game %}" class="btn-sm btn-secondary">{{ game.game__name }}</a>
+                        <a href="{% url 'delete_review' game %}" class="small">delete</a><br>
+                    </p>
+                    {% endfor %}
 
-            <a href="{% url 'delete_review' game %}" class="small">delete</a><br>
-            </p>
-            {% endfor %}
-
-            {% else %}
-            <p>?</p>
-            <p>
-                Create a profile to get access to your statistics!
-                <a class="btn btn-info" href="{% url 'account_signup' %}">Sign up</a>
-                <a class="btn btn-dark" href="{% url 'account_login' %}">Sign in</a>
-                {% endif %}
-            </p>
+                    {% else %}
+                    <p>?</p>
+                    <p class="text-center">
+                        Create a profile to get access to your statistics!
+                        <a class="btn btn-info" href="{% url 'account_signup' %}">Sign up</a>
+                        <a class="btn btn-dark" href="{% url 'account_login' %}">Sign in</a>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
         </div>
-
-
-
-
-
-
     </div>
 </div>
 
+{% endblock %}
+
+{% block postLoad_js %}
+<script>
+    populateAndCreateChart("{{categories_percentage}}", profileCatChart);
+</script>
 {% endblock %}

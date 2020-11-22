@@ -143,6 +143,53 @@ var categoryChart = {
     }
 }
 
+var profileCatChart = {
+    canvasId: 'profile-categories',
+    type: 'radar',
+    options: {
+        scale: {
+            ticks: {
+                beginAtZero: true,
+                min: 0,
+                stepSize: 10
+            },
+            pointLabels: {
+                fontSize: 16
+            }
+        },
+        legend: {
+            display: false
+        },
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    return data['labels'][tooltipItem['index']] + ': ' + data['datasets'][0]['data'][tooltipItem['index']] + '%';
+                },
+            }
+        }
+    },
+    data: {
+        labels: [],
+        datasets: [{
+            label: "",
+            data: [],
+            backgroundColor: ['rgba(91, 192, 222, 0.8)'],
+            borderColor: "rgba(200,0,200,0.6)",
+            pointHoverRadius: 10,
+            radius: 6,
+            pointRadius: 3,
+            pointBorderWidth: 2,
+            pointBackgroundColor: "white",
+            pointBorderColor: "rgba(200,0,0,0.6)",
+            pointHoverRadius: 10,
+            borderWidth: 2,
+            borderColor: 'rgba(91, 192, 222, 0.8)',
+            hoverBorderWidth: 2,
+            hoverBorderColor: 'rgba(91, 192, 222,0.8)'
+        }]
+    }
+}
+
 function populateAndCreateChart(chartInfo, chartSettings) {
     chartInfo = JSON.parse(chartInfo.replace(/&quot;|&#x27;/g, '\"'));
     chartSettings.data.labels = Object.keys(chartInfo);

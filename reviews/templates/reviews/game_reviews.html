@@ -30,7 +30,7 @@
                 <!-- ************************************************************ PLAYED -->
                 <div class="row">
                     <div class="col-8 offset-2 col-sm-3 offset-sm-0 pl-3 mb-1">
-                        <h6 class="card-title text-center">Played x Watched</h6>
+                        <h5 class="card-title text-center">Played x Watched</h5>
                         <h6 class="card-subtitle mb-2 text-muted text-center">
                             {% if played_percentage.watched > played_percentage.played %}
                             {{played_percentage.watched}}% watched
@@ -74,7 +74,7 @@
                     <!-- ************************************************************ CATEGORIES -->
 
                     <div class="col-12 col-sm-6 p-0 mb-1">
-                        <h6 class="card-title text-center">Main Categories</h6>
+                        <h5 class="card-title text-center">Categories</h5>
                         <div class="container p-1">
                             <canvas id="category-chart"></canvas>
                         </div>
@@ -84,7 +84,7 @@
 
 
                     <div class="col-12 col-sm-3 pl-0 mb-1 text-center">
-                        <h6 class="card-title">Main Emotions</h6>
+                        <h5 class="card-title">Main Emotions</h5>
                         <div class="container">
                             <canvas id="emotions-chart"></canvas>
                         </div>
