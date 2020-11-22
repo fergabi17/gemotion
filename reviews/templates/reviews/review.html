@@ -179,7 +179,7 @@
         // Load terms in database for input validation
         emotions.loadEmotions('{{emotions}}', '{{categories}}');
         // Load tags if in edit page
-        if ('{{edit_page}}'){
+        if ('{{edit_page}}' === 'True'){
             tags = JSON.parse('{{edit_page.emotions}}'.replace(/(&#x27;)/g,"\""));
             addTags();
         }

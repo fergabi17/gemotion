@@ -75,7 +75,7 @@ var addInput = function (e, emotion){
             INPUT.value = '';
             // $('.collapse').removeClass('show');
         } else if (emotions.categories.includes(userInput)){
-            INPUT.value = 'category';
+            INPUT.value = 'Use button bellow :)';
         } else {
             INPUT.value = '';
         }
