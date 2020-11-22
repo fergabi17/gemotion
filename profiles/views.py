@@ -14,6 +14,7 @@ def profile(request):
     Creates a view for the user's profile
     presenting data about reviews
     """
+    
     categories_model = Category.objects.all()
     categories_final = {}
     for category in categories_model:
@@ -86,7 +87,7 @@ def delete_review(request, game):
     Deletes a review from the database
     """
     profile = get_object_or_404(UserProfile, user=request.user)
-    game = get_object_or_404(Game, name=game)
+    game = get_object_or_404(Game, pk=game)
     reviews = Review.objects.filter(game=game,
                                     user_profile=profile)
     reviews.delete()
