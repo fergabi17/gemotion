@@ -5,8 +5,11 @@ from .models import UserProfile
 from games.models import Game
 from reviews.models import Category, Emotion, Review
 from django.db.models import Count, F
+from os import path
+import os
 
-# @login_required
+if path.exists("profiles/env.py"):
+    from profiles import env
 
 
 def profile(request):
@@ -92,6 +95,20 @@ def delete_review(request, game):
                                     user_profile=profile)
     reviews.delete()
     return redirect(reverse('profile'))
+
+
+def payment(request):
+    """
+    Renders the payment page
+    """
+    spk = os.environ.get("stripe_public_key")
+    cs = os.environ.get("client_secret")
+    
+    context = {
+        'stripe_public_key': spk,
+        'client_secret': cs
+    }
+    return render(request, 'profiles/payment.html', context)
 
 
 # ------------------------------------------------------- Helper functions
