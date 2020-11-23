@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.conf import settings
 from collections import Counter
 from .models import UserProfile
 from games.models import Game
@@ -7,6 +9,7 @@ from reviews.models import Category, Emotion, Review
 from django.db.models import Count, F
 from os import path
 import os
+import stripe
 
 if path.exists("profiles/env.py"):
     from profiles import env
@@ -101,15 +104,36 @@ def payment(request):
     """
     Renders the payment page
     """
-    spk = os.environ.get("stripe_public_key")
-    cs = os.environ.get("client_secret")
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    stripe_total = 500
+    
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+    
+    if not stripe_public_key:
+        messages.warning(request, 'Stripe public key is missing. \
+            Did you forget to set it in your environment?')
     
     context = {
-        'stripe_public_key': spk,
-        'client_secret': cs
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret
     }
     return render(request, 'profiles/payment.html', context)
 
+
+def donated(request):
+    """
+    Changes the user status to donated
+    """
+    profile = get_object_or_404(UserProfile, user=request.user)
+    profile.donated = True
+    profile.save()
+    return redirect(reverse('profile'))
 
 # ------------------------------------------------------- Helper functions
 

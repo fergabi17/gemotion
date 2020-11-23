@@ -8,6 +8,7 @@ class UserProfile(models.Model):
     A user profile module 
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    donated = models.BooleanField(default=False)
     
     def __str__(self):
         return self.user.username
