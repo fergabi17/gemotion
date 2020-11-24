@@ -1,5 +1,5 @@
 body {
-    background: url('/static/media/25101.jpg') no-repeat center center fixed;
+    background: url('/staticfiles/media/25101.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 

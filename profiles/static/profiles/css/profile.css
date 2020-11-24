@@ -1,7 +1,7 @@
 
 
 .card-body {
-    background: url('../../../static/media/12364.png') no-repeat center top fixed;
+    background: url('../../../staticfiles/media/12364.png') no-repeat center top fixed;
     background-size: cover;
 }
 
