@@ -15,12 +15,15 @@
 
     <div class="row">
         <div class="col-12">
-            <h2><i class="large material-icons">account_circle</i> Donate</h2>
+            <h2><i class="large material-icons">assistant</i> Donate</h2>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
+            <p class="text-center">Would you like to donate to Gemotion?<br>
+                Donate as little as 5,00 € and you will be help maintaining this webapp!
+            </p>
             <form method="POST" id="payment-form" action="{% url 'donated' %}">
                 {% csrf_token %}
                 <fieldset class="px-3">
@@ -31,7 +34,9 @@
                     <!-- Used to display form errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                 </fieldset>
-                <button type="submit" class="btn-dark">Send donation</button>
+                <p class="text-center">
+                    <button type="submit" class="btn-info">Send 5€ donation</button>
+                </p>
             </form>
         </div>
     </div>

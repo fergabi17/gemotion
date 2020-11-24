@@ -16,7 +16,16 @@
     <div class="row">
 
         <div class="col-12">
-            <h2><i class="large material-icons">account_circle</i> Profile</h2>
+            <h2>
+                <i class="large material-icons">
+                    {% if profile.donated %}
+                    stars
+                    {% else %}
+                    account_circle
+                    {% endif %}
+                </i> 
+                Profile
+            </h2>
 
             <!-- ************************************************ FROM REVIEW -->
             {% if from_review %}
@@ -86,18 +95,18 @@
                 </div>
             </div>
             <!-- ************************************************ PAYMENT -->
+            {% if not profile.donated %}
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 p-3">
                     <p class="text-center">
                         Do you like using Gemotion? <a href="{% url 'payment' %}" class="btn-sm btn-info">donate!</a>
                     </p>
-                    <p>Donated:{{profile.donated}}</p>
                 </div>
             </div>
-            <div class="row">
-
+            {% endif %}
+            
                 <!-- ************************************************ CHARTS -->
-
+            <div class="row">
                 <div class="col-sm-8" id="chartArea">
                     <h2 class="card-title text-center">Categories</h2>
                         <div class="container p-1">
