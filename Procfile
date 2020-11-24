@@ -1,0 +1,1 @@
+web: gunicorn gemotion.wsgi:application 

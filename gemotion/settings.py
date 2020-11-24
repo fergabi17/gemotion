@@ -30,7 +30,7 @@ SECRET_KEY = '!4j!04pws@+#3&(8%2avgrp!)pwnk8f_u#nq+&3tjl$lp$ikg-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fgc-gemotion.herokuapp.com', 'localhost']
 
 
 # Application definition
