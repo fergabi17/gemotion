@@ -27,16 +27,23 @@
                 Profile
             </h2>
 
-            <!-- ************************************************ FROM REVIEW -->
-            {% if from_review %}
-            <h1>Thank you for your review {{ profile }}!</h1>
+            <!-- ************************************************ MESSAGES -->
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <h4 class="text-center"><i class="large material-icons">favorite</i> {{message}}</h4>
+            {% else %}
+                <h4 class="text-center">{{message}}</h4>
+            {% endif %}
+            {% endfor %}
             {% endif %}
 
+
+            <!-- ************************************************ CARDS PROFILE -->
             <h2 class="text-center">
                 {{ profile|title }}'s statistics
             </h2>
 
-            <!-- ************************************************ CARDS PROFILE -->
             <div class="card-group">
                 <div class="card">
 

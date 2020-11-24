@@ -122,6 +122,7 @@ def post_review(request):
                                 played=user_played,
                                 emotion=emotion)
             new_review.save()
+    messages.success(request, f'Thank you for reviewing {game}')
     return redirect(reverse('profile'))
 
 
