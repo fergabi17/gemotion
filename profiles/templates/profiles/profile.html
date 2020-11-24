@@ -30,7 +30,7 @@
             <!-- ************************************************ MESSAGES -->
             {% if messages %}
             {% for message in messages %}
-            {% if message.tags == 'success' %}
+            {% if message.extra_tags == 'heart' %}
                 <h4 class="text-center"><i class="large material-icons">favorite</i> {{message}}</h4>
             {% else %}
                 <h4 class="text-center">{{message}}</h4>
@@ -136,6 +136,8 @@
                     <p>?</p>
                     <p class="text-center">
                         Create a profile to get access to your statistics!
+                    </p>
+                    <p class="text-center">
                         <a class="btn btn-info" href="{% url 'account_signup' %}">Sign up</a>
                         <a class="btn btn-dark" href="{% url 'account_login' %}">Sign in</a>
                         {% endif %}

@@ -118,11 +118,10 @@ def post_review(request):
         for pk in result:
             emotion = get_object_or_404(Emotion, pk=pk)
             new_review = Review(game=game,
-                                user_profile=profile,
                                 played=user_played,
                                 emotion=emotion)
             new_review.save()
-    messages.success(request, f'Thank you for reviewing {game}')
+    messages.success(request, f'Thank you for reviewing {game}', extra_tags='heart')
     return redirect(reverse('profile'))
 
 

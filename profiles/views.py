@@ -134,6 +134,7 @@ def donated(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     profile.donated = True
     profile.save()
+    messages.success(request, 'Thank you very much for your donation!', extra_tags='heart')
     return redirect(reverse('profile'))
 
 # ------------------------------------------------------- Helper functions
