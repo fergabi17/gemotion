@@ -57,8 +57,11 @@ def profile(request):
         for item in categories_final:
             if item in categories_count:
                 categories_final[item] = categories_count[item]
-        categories_percentage = get_dict_percentages(
-            categories_final, len(reviews))
+        if len(reviews) > 0:
+            categories_percentage = get_dict_percentages(
+                categories_final, len(reviews))
+        else:
+            categories_percentage = categories_final
               
     else:
         profile = "user"
