@@ -100,7 +100,7 @@ def delete_review(request, game):
     reviews = Review.objects.filter(game=game,
                                     user_profile=profile)
     reviews.delete()
-    messages.warning(request, f'{game} was deleted from your reviews')
+    messages.success(request, f'{game} was deleted from your reviews', extra_tags='regular')
     return redirect(reverse('profile'))
 
 

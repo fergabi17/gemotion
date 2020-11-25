@@ -32,8 +32,9 @@
             {% for message in messages %}
             {% if message.extra_tags == 'heart' %}
                 <h4 class="text-center"><i class="large material-icons">favorite</i> {{message}}</h4>
-            {% else %}
-                <h4 class="text-center">{{message}}</h4>
+            {% endif %}
+            {% if message.extra_tags == 'regular' %}
+                <p class="text-center">{{message}}</p>
             {% endif %}
             {% endfor %}
             {% endif %}
