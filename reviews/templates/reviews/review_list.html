@@ -31,14 +31,14 @@
                 <div class="col-12 text-center" id="sorting">
 
                     <!-- ************************************************************ sort: LATEST -->
-                    <a class="btn btn-sm {% if sorting == 'latest'%}btn-outline-secondary{% else %}btn-info{% endif %}"
+                    <a class="btn btn-sm m-1 {% if sorting == 'latest'%}btn-outline-secondary{% else %}btn-outline-info{% endif %}"
                         type="button" href="{% url 'review_list' %}">
                         latest reviews
                     </a>
 
                     <!-- ************************************************************ sort: CATEGORY -->
                     <button
-                        class="btn btn-sm {% if sorting.0 == 'category'%}btn-outline-secondary{% else %}btn-info{% endif %}"
+                        class="btn btn-sm m-1 {% if sorting.0 == 'category'%}btn-outline-secondary{% else %}btn-outline-info{% endif %}"
                         type="button" data-toggle="collapse" data-target="#collapseCat" aria-expanded="false"
                         aria-controls="collapseCat">
                         choose by category
@@ -46,7 +46,7 @@
 
                     <!-- ************************************************************ sort: EMOTION -->
                     <button
-                        class="btn btn-sm {% if sorting.0 == 'emotion'%}btn-outline-secondary{% else %}btn-info{% endif %}"
+                        class="btn btn-sm m-1 {% if sorting.0 == 'emotion'%}btn-outline-secondary{% else %}btn-outline-info{% endif %}"
                         type="button" data-toggle="collapse" data-target="#collapseEm" aria-expanded="false"
                         aria-controls="collapseEm">
                         choose by emotion

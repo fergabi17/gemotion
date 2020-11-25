@@ -69,7 +69,7 @@
                     </button>
                 </div>
 
-                <div class="col-12 collapse text-center mb-3" id="collapseExample">
+                <div class="col-12 col-sm-6 offset-sm-3 collapse text-center mb-3" id="collapseExample">
                     {% for category in categories %}
                     <button class="btn btn-secondary m-1" data-toggle="collapse" data-target="#emotion-by-category-{{ forloop.counter }}"
                          aria-controls="emotion-by-category" aria-expanded="false">{{category}}</button>

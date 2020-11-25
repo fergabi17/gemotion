@@ -6,8 +6,8 @@
 }
 
 .tag-container {
-    min-height: 60px;
-    height: calc(100vh - 750px);
+    height: 170px;
+    width: 100%;
     border-radius: 3px;
     display: flex;
     flex-wrap: wrap;
@@ -42,6 +42,10 @@
     top:50%;
     left:50%;
     z-index: -1;
+    width: 2px;
+    height: 2px;
+    overflow: hidden;
+    font-size: 1pt;
 }
 
 
