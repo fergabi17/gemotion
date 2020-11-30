@@ -25,12 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!4j!04pws@+#3&(8%2avgrp!)pwnk8f_u#nq+&3tjl$lp$ikg-'
+SECRET_KEY = os.getenv('SECRET_KEY', '') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if path.exists("profiles/env.py"):
+    DEBUG = True
+else: 
+    DEBUG = False
 
-ALLOWED_HOSTS = ['fgc-gemotion.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['fgc-gemotion.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -113,7 +116,7 @@ WSGI_APPLICATION = 'gemotion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if not path.exists('gemotion/env.py'):
+if not path.exists('profiles/env.py'):
     DATABASES = {
         'default': dj_database_url.parse('postgres://sbmssnvjxehvwj:ca2bb529809d79b10eb0cda917382efbe1f72887f22757a83baf54dfe448cd3c@ec2-176-34-114-78.eu-west-1.compute.amazonaws.com:5432/d2v77mhj85f36')
     }
