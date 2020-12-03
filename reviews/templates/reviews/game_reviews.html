@@ -16,7 +16,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12" style="background-color:rgba(255, 255, 255, 0.7)">
+            <div class="col-12" style="background-color:rgba(255, 255, 255, 0.9)">
 
                 <!-- ************************************************************ TOP -->
                 <h2><i class="large material-icons">games</i> Game Reviews</h2>
@@ -54,9 +54,13 @@
                                     <i class="material-icons tiny"
                                         style="vertical-align: middle !important;">create</i>
                                         Edit my review
-                                </button>
-                                <a href="{% url 'delete_review' game.id %}" class="small d-block">delete review</a><br>
+                                </button><br>
+                                
                             </form>
+                            <button class="btn-sm btn-light mt-2">
+                                <a class="d-block" href="{% url 'delete_review' game.id %}">delete review</a>
+                            </button><br>
+                            <br>
                             {% else %}
                             <form method="POST" action="{% url 'review' %}" class="form d-inline"
                                 enctype="multipart/form-data">

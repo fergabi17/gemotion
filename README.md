@@ -21,8 +21,6 @@ Website objectives:
     - Most evaluated
     - Emotions the title evokes
     - Patterns emotions x genres
-- Collect data about users:
-    - Average
 - Create a relational games x feelings database
 - Analyse the data of the most common feelings to the best rated games
 - Offer users a new tool/logic to analyse or recommend a game
@@ -78,7 +76,7 @@ Apps:
     - Game description
 
 
-Reviews
+- Reviews
     Category MODEL
     - PK
     - Category name
@@ -130,6 +128,10 @@ User Stories:
         - on the top navigation bar
     - Create a user:
         - From the navigation bar "Sign up"
+        - From the game reviews page, if not logged
+        - From the profile page, if not logged
+    - Sign in:
+        - From the navigation bar "Sign in"
         - From the game reviews page, if not logged
         - From the profile page, if not logged
     - Review a game:
@@ -192,6 +194,9 @@ User Stories:
 
 - [Stripe](https://stripe.com/)
     - This project uses stripe to implement the payment functionality
+
+- [CrispyForms](https://django-crispy-forms.readthedocs.io/)
+    - This project uses crispy forms to render django forms on bootstrap-4
 
 - [Google Chrome](https://www.google.com/chrome/)
     - This project used google CHROME browser and its developer tools
