@@ -9,7 +9,7 @@ import json
 
 def index(request):
     """
-    Creates a view for the index
+    Creates a view for the index page (review a game)
     """
     return render(request, 'games/index.html')
 
@@ -37,7 +37,7 @@ def search_game(request):
 def get_or_add_game(request):
     """
     Tries getting the game from gemotion database,
-    if not there yet it adds it
+    if it's not there yet it adds it
     returns the game object
     """
     game_id = int(request.POST["game-id"])

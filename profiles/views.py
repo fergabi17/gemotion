@@ -23,6 +23,7 @@ def profile(request):
     
     categories_model = Category.objects.all()
     categories_final = {}
+    # Preparing content for charts on profile
     for category in categories_model:
         categories_final[str(category)] = 0
         
@@ -31,38 +32,42 @@ def profile(request):
         reviews = profile.reviews.all()
         last_review = reviews.order_by('-date').first()
 
-
         games = reviews.values('game__name', 'game').distinct()
         games_names = reviews.values_list('game__name', flat=True).distinct()
         games_reviewed = len(games_names)
 
-
+        # Getting all emotions counter to get the top one
         top_emotions = reviews.values_list('emotion__name').annotate(
             emotion_count=Count('emotion')).order_by('-emotion_count')
         top_emotion = top_emotions[0][0] if len(top_emotions) > 0 else "None"
         games_top_emotions = reviews.filter(emotion__name=top_emotion)
         games_top_emotions = games_top_emotions.values_list('game__name', flat=True).distinct()[:5]
-        
-        
+
+        #  Getting all categories counter to get the top one
         top_categories = reviews.values_list('emotion__category__name').annotate(
             category_count=Count('emotion__category__name')).order_by('-category_count')
         top_category = top_categories[0][0] if len(top_categories) > 0 else "None"
         games_top_categories = reviews.filter(emotion__category__name=top_category)
         games_top_categories = games_top_categories.values_list('game__name', flat=True).distinct()[:5]
         
+        # Getting categories statistics for chart
         categories = reviews.values_list("emotion__category__name")
         categories_count = Counter(categories).most_common()
         categories_count = {item[0][0]: item[1] for item in categories_count}
 
+        # Updating chart content from 0 to actual % value
         for item in categories_final:
             if item in categories_count:
                 categories_final[item] = categories_count[item]
+                
         if len(reviews) > 0:
             categories_percentage = get_dict_percentages(
                 categories_final, len(reviews))
         else:
+            # if no reviews on the profile chart content
             categories_percentage = categories_final
-              
+    
+    # Not logged profile content
     else:
         profile = "user"
         games_reviewed = "?"
@@ -106,7 +111,8 @@ def delete_review(request, game):
 
 def payment(request):
     """
-    Renders the payment page
+    Renders the payment page with
+    stripe variables
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY

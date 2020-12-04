@@ -19,6 +19,7 @@ def review(request):
     Creates a view for the review page
     """
 
+    # For the input autocomplete
     if "term" in request.GET:
         em = Emotion.objects.filter(name__icontains=request.GET.get('term'))
         cat = Category.objects.filter(
@@ -33,14 +34,20 @@ def review(request):
         edit_page = False
         path = request.META.get('HTTP_REFERER')
 
+        # For sure we have the game on gemotion database
         if "/review_list/" in path or "/reviews/" in path:
             game = get_object_or_404(Game, pk=request.POST["game-id"])
+            
             if "edit-game" in request.POST:
                 edit_page = True
+                
+        # Check if the game is on database
         else:
             game = get_or_add_game(request)
 
         form = ReviewForm(request.POST)
+        
+        # Getting emotions pk
         emotions_model = Emotion.objects.all()
         emotions_model = serializers.serialize("json", emotions_model)
         emotions_model = json.loads(emotions_model)
@@ -49,8 +56,10 @@ def review(request):
         for emotion in emotions_model:
             emotions_pk[emotion['fields']['name']] = emotion['pk']
 
+        # Getting categories
         categories_model = Category.objects.all()
         categories_array = []
+        
         for category in categories_model:
             categories_array.append(str(category))
         categories_model = serializers.serialize("json", categories_model)
@@ -76,7 +85,6 @@ def review(request):
             'categories_model': categories_model,
             'form': form,
             'emotions_model': emotions_model,
-
             'edit_page': edit_page
         }
 
@@ -99,12 +107,14 @@ def post_review(request):
         user_game_reviews = Review.objects.filter(game=game,
                                                   user_profile=profile)
 
+        # delete previous reviews to post the edited ones
         if "edit-game" in request.POST:
             user_game_reviews.delete()
 
         reviews_emotions = list(
             user_game_reviews.values_list('emotion__name', flat=True))
 
+        # Add each emotion as a new review for that game
         for pk in result:
             emotion = get_object_or_404(Emotion, pk=pk)
             if str(emotion) not in reviews_emotions:
@@ -113,6 +123,8 @@ def post_review(request):
                                     played=user_played,
                                     emotion=emotion)
                 new_review.save()
+                
+    # Post an anonymous review
     else:
         game = get_object_or_404(Game, pk=game_id)
         for pk in result:
@@ -121,6 +133,7 @@ def post_review(request):
                                 played=user_played,
                                 emotion=emotion)
             new_review.save()
+            
     messages.success(request, f'Thank you for reviewing {game}', extra_tags='heart')
     return redirect(reverse('profile'))
 
@@ -141,6 +154,7 @@ def review_list(request):
     sorting = 'latest'
     reviews = Review.objects.values_list("game", "date").order_by('-date')
 
+    # Sorting by emotion or by category
     if request.GET:
         if 'category' in request.GET:
             requested_cat = request.GET['category']
@@ -154,6 +168,8 @@ def review_list(request):
                 emotion__name=requested_em).order_by('game')
 
     presented_games = []
+    
+    # Get the last 20 games to render on the page
     for review in reviews:
         if not any(review[0] in i for i in presented_games):
             presented_games.append(review)
@@ -165,6 +181,7 @@ def review_list(request):
         game_dict = get_object_or_404(Game, pk=game[0])
         last_reviewed = game[1]
         games.append((game_dict, last_reviewed))
+        
     context = {
         'sorting': sorting,
         'games': games,

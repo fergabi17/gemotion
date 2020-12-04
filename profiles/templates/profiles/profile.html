@@ -103,7 +103,7 @@
                 </div>
             </div>
             <!-- ************************************************ PAYMENT -->
-            {% if not profile.donated %}
+            {% if not profile.donated and request.user.is_authenticated %}
             <div class="row">
                 <div class="col-12 p-3">
                     <p class="text-center">
