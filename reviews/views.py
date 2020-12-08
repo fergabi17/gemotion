@@ -158,7 +158,7 @@ def review_list(request):
     if request.GET:
         if 'category' in request.GET:
             requested_cat = request.GET['category']
-            sorting = ['category',requested_cat]
+            sorting = ['category', requested_cat]
             reviews = Review.objects.values_list("game", "date").filter(
                 emotion__category__name=requested_cat).annotate(name_count=Count('game')).order_by('name_count')
         if 'emotion' in request.GET:

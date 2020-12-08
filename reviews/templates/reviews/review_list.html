@@ -13,6 +13,12 @@
     }
     function sortBy(term, type) {
         var currentUrl = new URL(window.location);
+        if(currentUrl.searchParams.has('emotion')){
+            currentUrl.searchParams.delete('emotion');
+        }
+        if(currentUrl.searchParams.has('category')){
+            currentUrl.searchParams.delete('category');
+        }
         currentUrl.searchParams.set(type, term);
         window.location.replace(currentUrl);
     }
@@ -161,29 +167,29 @@
 {{ block.super }}
 
 <script type="text/javascript">
-    function sortBy(term, type) {
-        var currentUrl = new URL(window.location);
-        currentUrl.searchParams.set(type, term);
-    }
-    $('#sort-selector').change(function () {
-        var selector = $(this);
-        var currentUrl = new URL(window.location);
+    // function sortBy(term, type) {
+    //     var currentUrl = new URL(window.location);
+    //     currentUrl.searchParams.set(type, term);
+    // }
+    // $('#sort-selector').change(function () {
+    //     var selector = $(this);
+    //     var currentUrl = new URL(window.location);
 
-        var selectedVal = selector.val();
-        if (selectedVal != "reset") {
-            var sort = selectedVal.split("_")[0];
-            var direction = selectedVal.split("_")[1];
+    //     var selectedVal = selector.val();
+    //     if (selectedVal != "reset") {
+    //         var sort = selectedVal.split("_")[0];
+    //         var direction = selectedVal.split("_")[1];
 
-            currentUrl.searchParams.set("sort", sort);
-            currentUrl.searchParams.set("direction", direction);
+    //         currentUrl.searchParams.set("sort", sort);
+    //         currentUrl.searchParams.set("direction", direction);
 
-            window.location.replace(currentUrl);
-        } else {
-            currentUrl.searchParams.delete("sort");
-            currentUrl.searchParams.delete("direction");
+    //         window.location.replace(currentUrl);
+    //     } else {
+    //         currentUrl.searchParams.delete("sort");
+    //         currentUrl.searchParams.delete("direction");
 
-            window.location.replace(currentUrl);
-        }
-    })
+    //         window.location.replace(currentUrl);
+    //     }
+    // })
 </script>
 {% endblock %}
