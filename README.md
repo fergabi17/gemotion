@@ -233,7 +233,7 @@ User Stories:
 
 To develop a game reviewing database, the first thing needed was data about those games. After researching something "easy" to use, I found the chicken coop gaming database on rapidapi.com. This website was very useful to test the API mechanics. In a short period of time, I had tested the game search and game details functionalities on my on python test file, found on tests/chickenAPI.
 
-Happy with the functionality I was going to work with, I jumped to Adobe XD to plan the [wireframes](https://fergabi17.github.io/gemotion/resources/wireframes/wireframes.html) based on how chicken coop worked. A couple of weeks later, with the planning ready and beginning of execution complete, I was surprised to find out that this API was no longer working. For some reason it was failing to return data requested, and I had to go back to look for a replacement API ASAP.
+Happy with the functionality I was going to work with, I jumped to Adobe XD to plan the [wireframes](https://fergabi17.github.io/gemotion/resources/UX/wireframes/wireframes.html) based on how chicken coop worked. A couple of weeks later, with the planning ready and beginning of execution complete, I was surprised to find out that this API was no longer working. For some reason it was failing to return data requested, and I had to go back to look for a replacement API ASAP.
 
 After a couple of days and tests, RAWG API was set as the new game database for this project. At the beginning this API seemed to be more complex that the first one since it was storing a lot more data. But with the help of rapidapi.com, I could understand this new API's behavior and start setting an even richier database than I was planning to have.
 
