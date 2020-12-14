@@ -94,6 +94,7 @@ def review(request):
 def post_review(request):
     """
     Posts all the emotions as single inputs in the database
+    redirects to the game reviews page
     """
     result = request.POST['pk_list']
     result = json.loads(result)
@@ -135,7 +136,7 @@ def post_review(request):
             new_review.save()
             
     messages.success(request, f'Thank you for reviewing {game}', extra_tags='heart')
-    return redirect(reverse('profile'))
+    return redirect(reverse('game_reviews', args=[game_id]))
 
 
 def review_list(request):
