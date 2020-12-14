@@ -282,7 +282,13 @@ During these manual tests, the main functionalities that were tested can be list
 - Information easily found
 - Readability
 
-The CSS and the HTML codes were validated on jigsaw.w3.org and validator.w3.org.
+### Expected Results
+
+Review Process:<br/>
+![1](tests/UX/ux-test.png)
+
+Donation Process:<br/>
+![1](tests/UX/ux-test2.png)
 
 ## Deployment
 
@@ -311,7 +317,7 @@ To have a copy of this project:
 - Create a profiles/env.py file to store environment variables stripe:
     - "STRIPE_PUBLIC_KEY" and "STRIPE_SECRET_KEY" from stripe
     - "SECRET_KEY" from your django settings
-- Add the fixtures to the datbase ```python3 manage.py loaddata categories.json``` and ```python3 manage.py loaddata emotions.json```
+- Add the fixtures to the database ```python3 manage.py loaddata categories.json``` and ```python3 manage.py loaddata emotions.json```
 - To view locally, enter: ```python3 manage.py runserver```
 - You can modify and push your modifications to your github page: 
     - ```git add <modified_files>```
