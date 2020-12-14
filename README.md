@@ -102,7 +102,7 @@ Apps:
 
 Find Here the wire frames for the information architecture:
 
-[Wireframes](https://fergabi17.github.io/gemotion/resources/wireframes/wireframes.html)
+[Wireframes](https://fergabi17.github.io/gemotion/resources/UX/wireframes/wireframes.html)
 
 ### SKELETON PLANE
 
@@ -246,7 +246,7 @@ The emotions list and their categories were added to the database using fixtures
 
 ### Review page
 
-One of the most laborious parts of this webapp was the review page. Initially planned to be a simple form with checkboxes for each emotion (you can check this on the [wireframes](https://fergabi17.github.io/gemotion/resources/wireframes/wireframes.html)), at the production stage this seemed too overwhelming. Considering 192 emotions, it would be a very discouraging and even boring form. Since this webapp was aiming to have a modern look, I looked for other options that would be more motivating to the users add their inputs.
+One of the most laborious parts of this webapp was the review page. Initially planned to be a simple form with checkboxes for each emotion (you can check this on the [wireframes](https://fergabi17.github.io/gemotion/resources/UX/wireframes/wireframes.html)), at the production stage this seemed too overwhelming. Considering 192 emotions, it would be a very discouraging and even boring form. Since this webapp was aiming to have a modern look, I looked for other options that would be more motivating to the users add their inputs.
 
 - input autocomplete
 The input autocomplete was the first idea to make a clean review page. To build this functionality, I used the following [video](https://www.youtube.com/watch?v=-oLVZp1NQVE&ab_channel=CodeBand), so the autocomplete would be directly linked to the list of emotions on the database. To show the selection of emotions made, I created a board with tags based on this [video](https://www.youtube.com/watch?v=ha4xwcJXwow&ab_channel=FrontendTips). With the help of some javascript, adding new emotions is now more visually appealing than with the long form. But during tests realized, a blank text input could look a bit scary for less creative people, and the review process could be very limited. Realized this, I acknowledged the need of a list from where users could actually choose from.
@@ -349,6 +349,10 @@ To deploy your version of this webapp:
 - When this is complete you have your version of the webapp.
 
 ## Credits
+
+### Media
+
+Background images from the website are from [Freepik](https://freepik.com/) and the game images are from [RAWG](https://rawg.io/) api.
 
 ### Acknowledgements
 
