@@ -13,9 +13,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import dj_database_url
 from os import path
+import environ
 import os
-if path.exists("profiles/env.py"):
-    from profiles import env
+
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,14 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', '')
-RAWG_KEY = os.getenv('RAWG_KEY', '') 
+SECRET_KEY=env("SECRET_KEY")
+RAWG_KEY=env("RAWG_KEY")
+DEBUG=env("DEBUG")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if path.exists("profiles/env.py"):
-    DEBUG = True
-else: 
-    DEBUG = False
 
 ALLOWED_HOSTS = ['fgc-gemotion.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'gemotion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if not path.exists('profiles/env.py'):
+if not path.exists('gemotion/.env'):
     DATABASES = {
         'default': dj_database_url.parse('postgres://sbmssnvjxehvwj:ca2bb529809d79b10eb0cda917382efbe1f72887f22757a83baf54dfe448cd3c@ec2-176-34-114-78.eu-west-1.compute.amazonaws.com:5432/d2v77mhj85f36')
     }
@@ -183,8 +183,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Stripe
 STRIPE_CURRENCY = 'eur'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
