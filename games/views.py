@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Game
+from django.conf import settings
 from reviews.models import Review
 
 import http.client
@@ -67,16 +68,17 @@ def call_RAWG(request, get_type):
     Contacts the RAWG api to search a game
     or to get game details
     """
+    raw_secret_key = settings.RAWG_KEY
     if get_type == "search":
         input_game_title = request.POST['game-title']
         game_title = urllib.parse.quote(input_game_title)
-        url_end = f"?search={game_title}"
+        url_end = f"?key={raw_secret_key}&search={game_title}"
     else:
         game_id = int(request.POST["game-id"])
-        url_end = f"/{game_id}"
+        url_end = f"/{game_id}?key={raw_secret_key}"
         
-    conn = http.client.HTTPSConnection("rapidapi.p.rapidapi.com")
-
+    conn = http.client.HTTPSConnection("rawg-video-games-database.p.rapidapi.com")
+    
     headers = {
         'x-rapidapi-key': "e930d07731mshe00718d0d6136eap1ae483jsnf6cea31e0367",
         'x-rapidapi-host': "rawg-video-games-database.p.rapidapi.com"
