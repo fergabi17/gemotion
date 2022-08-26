@@ -3,6 +3,7 @@
 Gemotion is a webapp to rate games according to your emotions.<br/>
 [See here the live version](http://fgc-gemotion.herokuapp.com/)
 
+
 The idea of this project is to use players’ emotions to create a new way to analyse video games. The webapp aims to collect data about how users feel playing or watching a specific title. 
 Common game evaluations found online normally focus on genre, score or graphics. Even if those aspects are meaningful, they can create an image of the game based only on its surface. But when we’re looking at a game review online, we may look for something beyond what it looks from the outside.
 
