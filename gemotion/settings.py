@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import sys
 from os import path
 import environ
 import os
@@ -20,6 +21,8 @@ import os
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,18 +129,22 @@ WSGI_APPLICATION = 'gemotion.wsgi.application'
 
 
 DATABASES = {
-        'default': dj_database_url.parse('postgres://sbmssnvjxehvwj:ca2bb529809d79b10eb0cda917382efbe1f72887f22757a83baf54dfe448cd3c@ec2-176-34-114-78.eu-west-1.compute.amazonaws.com:5432/d2v77mhj85f36')
+    'default': {
+        'ENGINE': env('ENGINE'),
+        'NAME': env('NAME'),
+        'USER': env('USER'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT':  '5432'
+    }
+}
+
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
    
-    
-"""
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-    }
-} 
-""" 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
