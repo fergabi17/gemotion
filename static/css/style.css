@@ -8,6 +8,7 @@ h1 {
     margin-bottom: 15vh;
     font-family: 'Kanit', sans-serif;
     font-weight: 300;
+    color: #212529;
 }
 
 h2 {
@@ -15,11 +16,13 @@ h2 {
     margin-bottom: 3vh;
     font-family: 'Kanit', sans-serif;
     font-weight: 300;
+    color: #212529;
 }
 
 h3 {
     font-family: 'Kanit', sans-serif;
     font-weight: 700;
+    color: #212529;
 }
 
 h5 {
@@ -27,6 +30,7 @@ h5 {
     margin-bottom: 1vh;
     font-family: 'Kanit', sans-serif;
     font-weight: 300;
+    color: #212529;
 }
 
 a {
@@ -66,6 +70,7 @@ a:hover {
     font-size: 11pt;
     font-family: 'Kanit', sans-serif;
     font-weight: 200;
+    color: #212529;
 }
 
 .main-text{
@@ -74,6 +79,7 @@ a:hover {
     font-family: 'Kanit', sans-serif;
     font-weight: 300;
     margin: 0;
+    color: #212529;
 }
 /* ------------------------------------------------ CARDS */
 
