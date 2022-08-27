@@ -124,18 +124,20 @@ WSGI_APPLICATION = 'gemotion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if not path.exists('gemotion/.env'):
-    DATABASES = {
+
+DATABASES = {
         'default': dj_database_url.parse('postgres://sbmssnvjxehvwj:ca2bb529809d79b10eb0cda917382efbe1f72887f22757a83baf54dfe448cd3c@ec2-176-34-114-78.eu-west-1.compute.amazonaws.com:5432/d2v77mhj85f36')
     }
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+   
+    
+"""
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
     }
 } 
-
+""" 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

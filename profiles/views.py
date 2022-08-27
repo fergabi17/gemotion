@@ -11,8 +11,6 @@ from os import path
 import os
 import stripe
 
-if path.exists("profiles/env.py"):
-    from profiles import env
 
 
 def profile(request):
