@@ -244,7 +244,6 @@ The core of this webapp are the reviews, and reviews are based on emotions. To h
 
 The emotions list and their categories were added to the database using fixtures. Considering there were 192 emotions in 16 categories at the end, to manually build and edit fixtures would be a quite extensive work. This way, I built a side tool: a python script that would read a csv and create the json file with the list of emotions needed. This way I could constantly test the review functionality and quickly edit fixtures when needed. You can find this tool on resources/fixture-builder
 
-
 ### Review page
 
 One of the most laborious parts of this webapp was the review page. Initially planned to be a simple form with checkboxes for each emotion (you can check this on the [wireframes](https://fergabi17.github.io/gemotion/resources/UX/wireframes/wireframes.html)), at the production stage this seemed too overwhelming. Considering 192 emotions, it would be a very discouraging and even boring form. Since this webapp was aiming to have a modern look, I looked for other options that would be more motivating to the users add their inputs.
